@@ -1,0 +1,37 @@
+extends CharacterBody2D
+class_name Player
+
+@export_category("Movement")
+@export var SPEED : float
+@export var JUMP_VELOCITY : float
+@export var JUMP_DIST : float
+@export var ACCELERATION : float
+@export var FRICTION : float
+
+##THIS CATEGORY CAN BE MOVED INTO A GLOBAL SCRIPT FOR EASIER SAVING
+@export_category("Power-ups")
+@export var hasDoubJump : bool
+@export var hasDash : bool
+@export var hasWallJump : bool
+
+@onready var FSM : StateMachine = $FSM
+@onready var StateLabel : Label = $DebugState
+
+##Player wide global variables
+var canCoyote : bool = true #COYOTE JUMPING FLAG IS BUGGY! FIND COYOTE JUMP LOGIC IN FALL
+var jump_ctr : int = 0
+
+func _physics_process(delta: float) -> void:
+	#print("PLAYER SCRIPT DEBUG: ", canCoyote)
+	StateLabel.text = FSM.cur_state.name
+	friction()
+	
+	clamp(velocity.x, -SPEED, SPEED)
+	# Add the gravity.
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+
+func friction() -> void:
+	var direction := Input.get_axis("ui_left", "ui_right")
+	if !direction:
+		velocity.x = move_toward(velocity.x, 0, FRICTION)

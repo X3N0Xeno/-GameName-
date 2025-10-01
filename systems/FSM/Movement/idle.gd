@@ -9,7 +9,7 @@ func enterState():
 
 func updateState(_delta : float):
 	#Transition to Run State when left or right button pressed
-	if Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right"):
+	if Input.is_action_pressed("mov_left") or Input.is_action_pressed("mov_right"):
 		
 		#Back in our FSM script, the change_state function needs two arguments:
 		#old_state and new_state_name. It is called when the transition signal gets emitted

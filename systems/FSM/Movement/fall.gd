@@ -9,7 +9,7 @@ func enterState():
 	coyoteTimer.start()
 
 func updateState(_delta : float):
-	if Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right"):
+	if Input.is_action_pressed("mov_left") or Input.is_action_pressed("mov_right"):
 		transition.emit(self, "Run")
 		
 	if player.is_on_floor():

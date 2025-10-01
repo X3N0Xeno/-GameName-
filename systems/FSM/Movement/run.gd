@@ -9,7 +9,7 @@ func enterState():
 func updateState(_delta : float):
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis("ui_left", "ui_right")
+	var direction := Input.get_axis("mov_left", "mov_right")
 	if direction:
 		player.velocity.x = move_toward(player.velocity.x, direction * player.SPEED, player.ACCELERATION)
 		#direction * player.SPEED

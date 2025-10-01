@@ -32,6 +32,6 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 
 func friction() -> void:
-	var direction := Input.get_axis("ui_left", "ui_right")
+	var direction := Input.get_axis("mov_left", "mov_right")
 	if !direction:
 		velocity.x = move_toward(velocity.x, 0, FRICTION)

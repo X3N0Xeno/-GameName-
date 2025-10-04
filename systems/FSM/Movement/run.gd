@@ -17,10 +17,11 @@ func updateState(_delta : float):
 			transition.emit(self, "Fall")
 	
 	
-	if player.velocity.length() <= .1 and player.is_on_floor():
-		transition.emit(self, "Idle")
-	
-	
+	if player.is_on_floor():
+		player.justDashed = false
+		if player.velocity.length() <= .1:
+			transition.emit(self, "Idle")
+
 	if Input.is_action_just_pressed("jump"):
 		if player.is_on_floor():
 			player.jump_ctr = 0
@@ -31,7 +32,7 @@ func updateState(_delta : float):
 			player.jump_ctr+=1 #Prevents infinite jumping
 			transition.emit(self, "Jump")
 			
-	elif Input.is_action_just_pressed("dash"):
+	elif Input.is_action_just_pressed("dash") and player.justDashed == false and player.hasDash:
 		transition.emit(self, "Dash")
 
 

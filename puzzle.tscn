@@ -1,0 +1,308 @@
+[gd_scene load_steps=4 format=3 uid="uid://bvwv7xkh64lni"]
+
+[ext_resource type="Texture2D" uid="uid://ddcvvpb6iplfo" path="res://icon.svg" id="1_77j1r"]
+[ext_resource type="Script" uid="uid://doogssvlwjjge" path="res://piece.gd" id="2_hgotr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_77j1r"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+scale = Vector2(3.2089183, 2.3681455)
+
+[node name="Fragment 1" type="Sprite2D" parent="."]
+texture = ExtResource("1_77j1r")
+script = ExtResource("2_hgotr")
+
+[node name="Button" type="Button" parent="Fragment 1"]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = -1
+anchor_left = 0.008
+anchor_top = 0.008
+anchor_right = 0.008
+anchor_bottom = 0.008
+offset_left = -64.023994
+offset_top = -64.024
+offset_right = 62.976
+offset_bottom = 62.976
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Right" type="Area2D" parent="Fragment 1"]
+position = Vector2(64, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fragment 1/Right"]
+shape = SubResource("RectangleShape2D_77j1r")
+
+[node name="ColorRect" type="ColorRect" parent="Fragment 1/Right"]
+offset_left = -12.0
+offset_top = -14.0
+offset_right = 13.0
+offset_bottom = 14.0
+
+[node name="Down" type="Area2D" parent="Fragment 1"]
+position = Vector2(0, 64)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fragment 1/Down"]
+shape = SubResource("RectangleShape2D_77j1r")
+
+[node name="ColorRect" type="ColorRect" parent="Fragment 1/Down"]
+offset_left = -12.0
+offset_top = -14.0
+offset_right = 13.0
+offset_bottom = 14.0
+
+[node name="Fragment 2" type="Sprite2D" parent="."]
+texture = ExtResource("1_77j1r")
+script = ExtResource("2_hgotr")
+
+[node name="Button" type="Button" parent="Fragment 2"]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = -1
+anchor_left = 0.008
+anchor_top = 0.008
+anchor_right = 0.008
+anchor_bottom = 0.008
+offset_left = -64.023994
+offset_top = -64.024
+offset_right = 62.976
+offset_bottom = 62.976
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Left" type="Area2D" parent="Fragment 2"]
+position = Vector2(-64, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fragment 2/Left"]
+shape = SubResource("RectangleShape2D_77j1r")
+
+[node name="ColorRect" type="ColorRect" parent="Fragment 2/Left"]
+offset_left = -12.0
+offset_top = -14.0
+offset_right = 13.0
+offset_bottom = 14.0
+
+[node name="Down" type="Area2D" parent="Fragment 2"]
+position = Vector2(0, 64)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fragment 2/Down"]
+shape = SubResource("RectangleShape2D_77j1r")
+
+[node name="ColorRect" type="ColorRect" parent="Fragment 2/Down"]
+offset_left = -12.0
+offset_top = -14.0
+offset_right = 13.0
+offset_bottom = 14.0
+
+[node name="Fragment 3" type="Sprite2D" parent="."]
+texture = ExtResource("1_77j1r")
+script = ExtResource("2_hgotr")
+
+[node name="Button" type="Button" parent="Fragment 3"]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = -1
+anchor_left = 0.008
+anchor_top = 0.008
+anchor_right = 0.008
+anchor_bottom = 0.008
+offset_left = -64.023994
+offset_top = -64.024
+offset_right = 62.976
+offset_bottom = 62.976
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Down" type="Area2D" parent="Fragment 3"]
+position = Vector2(0, 64)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fragment 3/Down"]
+shape = SubResource("RectangleShape2D_77j1r")
+
+[node name="ColorRect" type="ColorRect" parent="Fragment 3/Down"]
+offset_left = -12.0
+offset_top = -14.0
+offset_right = 13.0
+offset_bottom = 14.0
+
+[node name="Right" type="Area2D" parent="Fragment 3"]
+position = Vector2(64, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fragment 3/Right"]
+shape = SubResource("RectangleShape2D_77j1r")
+
+[node name="ColorRect" type="ColorRect" parent="Fragment 3/Right"]
+offset_left = -12.0
+offset_top = -14.0
+offset_right = 13.0
+offset_bottom = 14.0
+
+[node name="Top" type="Area2D" parent="Fragment 3"]
+position = Vector2(0, -64)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fragment 3/Top"]
+shape = SubResource("RectangleShape2D_77j1r")
+
+[node name="ColorRect" type="ColorRect" parent="Fragment 3/Top"]
+offset_left = -12.0
+offset_top = -14.0
+offset_right = 13.0
+offset_bottom = 14.0
+
+[node name="Fragment 4" type="Sprite2D" parent="."]
+texture = ExtResource("1_77j1r")
+script = ExtResource("2_hgotr")
+
+[node name="Button" type="Button" parent="Fragment 4"]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = -1
+anchor_left = 0.008
+anchor_top = 0.008
+anchor_right = 0.008
+anchor_bottom = 0.008
+offset_left = -64.023994
+offset_top = -64.024
+offset_right = 62.976
+offset_bottom = 62.976
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Left" type="Area2D" parent="Fragment 4"]
+position = Vector2(-64, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fragment 4/Left"]
+shape = SubResource("RectangleShape2D_77j1r")
+
+[node name="ColorRect" type="ColorRect" parent="Fragment 4/Left"]
+offset_left = -12.0
+offset_top = -14.0
+offset_right = 13.0
+offset_bottom = 14.0
+
+[node name="Down" type="Area2D" parent="Fragment 4"]
+position = Vector2(0, 64)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fragment 4/Down"]
+shape = SubResource("RectangleShape2D_77j1r")
+
+[node name="ColorRect" type="ColorRect" parent="Fragment 4/Down"]
+offset_left = -12.0
+offset_top = -14.0
+offset_right = 13.0
+offset_bottom = 14.0
+
+[node name="Top" type="Area2D" parent="Fragment 4"]
+position = Vector2(0, -64)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fragment 4/Top"]
+shape = SubResource("RectangleShape2D_77j1r")
+
+[node name="ColorRect" type="ColorRect" parent="Fragment 4/Top"]
+offset_left = -12.0
+offset_top = -14.0
+offset_right = 13.0
+offset_bottom = 14.0
+
+[node name="Fragment 5" type="Sprite2D" parent="."]
+texture = ExtResource("1_77j1r")
+script = ExtResource("2_hgotr")
+
+[node name="Button" type="Button" parent="Fragment 5"]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = -1
+anchor_left = 0.008
+anchor_top = 0.008
+anchor_right = 0.008
+anchor_bottom = 0.008
+offset_left = -64.023994
+offset_top = -64.024
+offset_right = 62.976
+offset_bottom = 62.976
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Right" type="Area2D" parent="Fragment 5"]
+position = Vector2(64, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fragment 5/Right"]
+shape = SubResource("RectangleShape2D_77j1r")
+
+[node name="ColorRect" type="ColorRect" parent="Fragment 5/Right"]
+offset_left = -12.0
+offset_top = -14.0
+offset_right = 13.0
+offset_bottom = 14.0
+
+[node name="Top" type="Area2D" parent="Fragment 5"]
+position = Vector2(0, -64)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fragment 5/Top"]
+shape = SubResource("RectangleShape2D_77j1r")
+
+[node name="ColorRect" type="ColorRect" parent="Fragment 5/Top"]
+offset_left = -12.0
+offset_top = -14.0
+offset_right = 13.0
+offset_bottom = 14.0
+
+[node name="Fragment 6" type="Sprite2D" parent="."]
+texture = ExtResource("1_77j1r")
+script = ExtResource("2_hgotr")
+
+[node name="Button" type="Button" parent="Fragment 6"]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = -1
+anchor_left = 0.008
+anchor_top = 0.008
+anchor_right = 0.008
+anchor_bottom = 0.008
+offset_left = -64.023994
+offset_top = -64.024
+offset_right = 62.976
+offset_bottom = 62.976
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Left" type="Area2D" parent="Fragment 6"]
+position = Vector2(-64, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fragment 6/Left"]
+shape = SubResource("RectangleShape2D_77j1r")
+
+[node name="ColorRect" type="ColorRect" parent="Fragment 6/Left"]
+offset_left = -12.0
+offset_top = -14.0
+offset_right = 13.0
+offset_bottom = 14.0
+
+[node name="Top" type="Area2D" parent="Fragment 6"]
+position = Vector2(0, -64)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fragment 6/Top"]
+shape = SubResource("RectangleShape2D_77j1r")
+
+[node name="ColorRect" type="ColorRect" parent="Fragment 6/Top"]
+offset_left = -12.0
+offset_top = -14.0
+offset_right = 13.0
+offset_bottom = 14.0
+
+[connection signal="button_down" from="Fragment 1/Button" to="Fragment 1" method="_on_button_button_down"]
+[connection signal="button_up" from="Fragment 1/Button" to="Fragment 1" method="_on_button_button_up"]
+[connection signal="area_entered" from="Fragment 1/Right" to="Fragment 1" method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Fragment 1/Down" to="Fragment 1" method="_on_area_2d_area_entered"]
+[connection signal="button_down" from="Fragment 2/Button" to="Fragment 2" method="_on_button_button_down"]
+[connection signal="button_up" from="Fragment 2/Button" to="Fragment 2" method="_on_button_button_up"]
+[connection signal="area_entered" from="Fragment 2/Left" to="Fragment 2" method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Fragment 2/Down" to="Fragment 2" method="_on_area_2d_area_entered"]
+[connection signal="button_down" from="Fragment 3/Button" to="Fragment 3" method="_on_button_button_down"]
+[connection signal="button_up" from="Fragment 3/Button" to="Fragment 3" method="_on_button_button_up"]
+[connection signal="area_entered" from="Fragment 3/Down" to="Fragment 3" method="_on_area_2d_area_entered"]
+[connection signal="button_down" from="Fragment 4/Button" to="Fragment 4" method="_on_button_button_down"]
+[connection signal="button_up" from="Fragment 4/Button" to="Fragment 4" method="_on_button_button_up"]
+[connection signal="area_entered" from="Fragment 4/Left" to="Fragment 4" method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Fragment 4/Down" to="Fragment 4" method="_on_area_2d_area_entered"]
+[connection signal="button_down" from="Fragment 5/Button" to="Fragment 5" method="_on_button_button_down"]
+[connection signal="button_up" from="Fragment 5/Button" to="Fragment 5" method="_on_button_button_up"]
+[connection signal="button_down" from="Fragment 6/Button" to="Fragment 6" method="_on_button_button_down"]
+[connection signal="button_up" from="Fragment 6/Button" to="Fragment 6" method="_on_button_button_up"]
+[connection signal="area_entered" from="Fragment 6/Left" to="Fragment 6" method="_on_area_2d_area_entered"]

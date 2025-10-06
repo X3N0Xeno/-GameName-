@@ -4,6 +4,7 @@ class_name StateIdle
 @export var player : Player
 
 func enterState():
+	player.isFalling = false
 	player.jump_ctr = 0
 	player.canCoyote = true
 	player.justDashed = false
@@ -19,10 +20,10 @@ func updateState(_delta : float):
 		transition.emit(self, "Run") 
 	
 	# Handle jump.
-	elif Input.is_action_just_pressed("jump") and player.is_on_floor():
-		transition.emit(self, "Jump")
-	
-	#Handle dash.
-	elif Input.is_action_just_pressed("dash") and player.justDashed == false and player.hasDash:
-		transition.emit(self, "Dash")
+	elif player.is_on_floor():
+		if Input.is_action_just_pressed("jump"):
+			transition.emit(self, "Jump")
+		#Handle dash.
+		elif Input.is_action_just_pressed("dash") and player.justDashed == false and player.hasDash:
+			transition.emit(self, "Dash")
 	player.move_and_slide()

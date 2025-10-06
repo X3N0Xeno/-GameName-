@@ -2,8 +2,10 @@ extends CharacterBody2D
 class_name Player
 
 @export_category("Movement")
+@export var GRAVITY : float
+@export var MAX_FALL_SPEED : float
 @export var SPEED : float
-@export var JUMP_VELOCITY : float
+#@export var JUMP_VELOCITY : float = 1000.0
 @export var JUMP_DIST : float
 @export var ACCELERATION : float
 @export var FRICTION : float
@@ -23,6 +25,7 @@ class_name Player
 
 ##Player wide global variables
 var canCoyote : bool = true #COYOTE JUMPING FLAG IS BUGGY! FIND COYOTE JUMP LOGIC IN FALL
+var isFalling : bool = false
 var jump_ctr : int = 0
 var justDashed : bool = false
 var direction : float
@@ -35,6 +38,8 @@ func _physics_process(delta: float) -> void:
 	
 	#print("PLAYER SCRIPT DEBUG: ", canCoyote)
 	#print("PLAYER SCRIPT DEBUG: ", last_dir)
+	#print("PLAYER SCRIPT DEBUG: ", velocity.y)
+	
 	if last_dir == 1:
 		if max_velx < velocity.x:
 			max_velx = velocity.x
@@ -42,14 +47,20 @@ func _physics_process(delta: float) -> void:
 		if -max_velx > velocity.x:
 			max_velx = velocity.x
 		
-	#print("PLAYER SCRIPT DEBUG: MAX VELOCITY X IS ", max_velx)
+	
 	StateLabel.text = FSM.cur_state.name
 	friction()
 	
 	clamp(velocity.x, -SPEED, SPEED)
+	
 	# Add the gravity.
 	if not is_on_floor():
-		velocity += get_gravity() * delta
+		velocity.y += GRAVITY * delta
+		if isFalling:
+			velocity.y += GRAVITY*1.5 * delta
+	
+	if velocity.y > MAX_FALL_SPEED:
+		velocity.y = MAX_FALL_SPEED
 
 func friction() -> void:
 	direction = Input.get_axis("mov_left", "mov_right")

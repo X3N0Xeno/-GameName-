@@ -1,6 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://dad7bc4523ujr"]
+[gd_scene load_steps=11 format=3 uid="uid://dad7bc4523ujr"]
 
+[ext_resource type="Script" uid="uid://bnuvcd4lbnbii" path="res://node_2d.gd" id="1_0hol4"]
 [ext_resource type="PackedScene" uid="uid://g08ql5rx0rod" path="res://entity/player/player.tscn" id="1_wtcfe"]
+[ext_resource type="PackedScene" uid="uid://40e5wxeadnpu" path="res://entity/enemy/enemy.tscn" id="3_epypp"]
 
 [sub_resource type="Gradient" id="Gradient_wtcfe"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
@@ -24,8 +26,10 @@ gradient = SubResource("Gradient_wtcfe")
 size = Vector2(3908.4565, 116.85196)
 
 [node name="[Game Name]" type="Node2D"]
+script = ExtResource("1_0hol4")
 
 [node name="Player" parent="." instance=ExtResource("1_wtcfe")]
+position = Vector2(-50, 316)
 
 [node name="floor" type="StaticBody2D" parent="."]
 position = Vector2(-2, 456)
@@ -69,3 +73,6 @@ position = Vector2(4.7683716e-07, 0)
 scale = Vector2(0.993231, 1.0526134)
 shape = SubResource("RectangleShape2D_0hol4")
 one_way_collision = true
+
+[node name="Enemy" parent="." instance=ExtResource("3_epypp")]
+position = Vector2(-179, 308)

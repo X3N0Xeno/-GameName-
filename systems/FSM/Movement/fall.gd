@@ -6,6 +6,7 @@ class_name  StateFall
 
 
 func enterState():
+	player.isFalling = true
 	coyoteTimer.start()
 
 func updateState(_delta : float):

@@ -4,6 +4,8 @@ class_name StateRun
 @export var player : Player
 
 func enterState():
+	
+	#player.isFalling = false
 	pass
 
 func updateState(_delta : float):
@@ -15,12 +17,13 @@ func updateState(_delta : float):
 	else:
 		if player.velocity.y > 1:
 			transition.emit(self, "Fall")
-	
-	
+			
 	if player.is_on_floor():
 		player.justDashed = false
-		if player.velocity.length() <= .1:
+		if player.velocity.length() <= .1 and not (Input.is_action_pressed("mov_left") or Input.is_action_pressed("mov_right")):
 			transition.emit(self, "Idle")
+	else:
+		player.isFalling = true
 
 	if Input.is_action_just_pressed("jump"):
 		if player.is_on_floor():

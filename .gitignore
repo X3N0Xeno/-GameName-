@@ -15,3 +15,4 @@ export_credentials.cfg
 data_*/
 mono_crash.*.json
 node_2d.tscn
+node_2d.tscn

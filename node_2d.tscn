@@ -7,12 +7,6 @@
 [sub_resource type="Gradient" id="Gradient_wtcfe"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_0e48y"]
-gradient = SubResource("Gradient_wtcfe")
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wtcfe"]
-size = Vector2(3908.4565, 116.85196)
-
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_wtcfe"]
 gradient = SubResource("Gradient_wtcfe")
 
@@ -34,15 +28,10 @@ position = Vector2(-50, 316)
 [node name="floor" type="StaticBody2D" parent="."]
 position = Vector2(-2, 456)
 
-[node name="Sprite2D" type="Sprite2D" parent="floor"]
-position = Vector2(3.637979e-12, 0)
-scale = Vector2(60.90385, -1.9687883)
-texture = SubResource("GradientTexture2D_0e48y")
+[node name="[Game Name]" type="Node2D"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="floor"]
-position = Vector2(4.7683716e-07, 0)
-scale = Vector2(0.993231, 1.0526134)
-shape = SubResource("RectangleShape2D_wtcfe")
+[node name="Player" parent="." instance=ExtResource("1_wtcfe")]
+position = Vector2(-4212, 179)
 
 [node name="oneway1" type="StaticBody2D" parent="."]
 position = Vector2(482.99997, 279)

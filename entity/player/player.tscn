@@ -1,4 +1,5 @@
 [gd_scene load_steps=16 format=3 uid="uid://g08ql5rx0rod"]
+[gd_scene load_steps=12 format=3 uid="uid://g08ql5rx0rod"]
 
 [ext_resource type="Script" uid="uid://u8os1uwcodsh" path="res://entity/player/player.gd" id="1_e6ar1"]
 [ext_resource type="Texture2D" uid="uid://d257ffddlidy4" path="res://icon.svg" id="1_hsefk"]
@@ -24,9 +25,10 @@ size = Vector2(113, 113)
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("health")]
 script = ExtResource("1_e6ar1")
+GRAVITY = 1000.0
+MAX_FALL_SPEED = 1000.0
 SPEED = 500.0
-JUMP_VELOCITY = 600.0
-JUMP_DIST = 1000.0
+JUMP_DIST = 700.0
 ACCELERATION = 300.0
 FRICTION = 50.0
 hasDoubJump = null
@@ -72,8 +74,15 @@ player = NodePath("../..")
 wait_time = 0.3
 one_shot = true
 
-[node name="Dash" type="Node" parent="FSM"]
+[node name="Dash" type="Node" parent="FSM" node_paths=PackedStringArray("player")]
 script = ExtResource("8_4btn6")
+player = NodePath("../..")
+
+[node name="WallSlide" type="Node" parent="FSM"]
+script = ExtResource("9_t2ln0")
+
+[node name="WallJump" type="Node" parent="FSM"]
+script = ExtResource("10_qa8rf")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)

@@ -19,6 +19,11 @@ JUMP_VELOCITY = 600.0
 JUMP_DIST = 1000.0
 ACCELERATION = 300.0
 FRICTION = 50.0
+<<<<<<< HEAD
+=======
+dashDist = 200.0
+dashDur = 0.2
+>>>>>>> parent of 31aae2b (Merge pull request #3 from X3N0Xeno/player-movement)
 
 [node name="DebugState" type="Label" parent="."]
 offset_left = -64.0
@@ -59,6 +64,10 @@ one_shot = true
 
 [node name="Dash" type="Node" parent="FSM"]
 script = ExtResource("8_4btn6")
+<<<<<<< HEAD
+=======
+player = NodePath("../..")
+>>>>>>> parent of 31aae2b (Merge pull request #3 from X3N0Xeno/player-movement)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)

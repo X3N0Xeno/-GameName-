@@ -14,9 +14,10 @@ radius = 56.22277
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_e6ar1")
+GRAVITY = 1000.0
+MAX_FALL_SPEED = 1000.0
 SPEED = 500.0
-JUMP_VELOCITY = 600.0
-JUMP_DIST = 1000.0
+JUMP_DIST = 700.0
 ACCELERATION = 300.0
 FRICTION = 50.0
 
@@ -57,8 +58,15 @@ player = NodePath("../..")
 wait_time = 0.3
 one_shot = true
 
-[node name="Dash" type="Node" parent="FSM"]
+[node name="Dash" type="Node" parent="FSM" node_paths=PackedStringArray("player")]
 script = ExtResource("8_4btn6")
+player = NodePath("../..")
+
+[node name="WallSlide" type="Node" parent="FSM"]
+script = ExtResource("9_t2ln0")
+
+[node name="WallJump" type="Node" parent="FSM"]
+script = ExtResource("10_qa8rf")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)

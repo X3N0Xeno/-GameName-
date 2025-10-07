@@ -1,3 +1,4 @@
+[gd_scene load_steps=16 format=3 uid="uid://g08ql5rx0rod"]
 [gd_scene load_steps=12 format=3 uid="uid://g08ql5rx0rod"]
 
 [ext_resource type="Script" uid="uid://u8os1uwcodsh" path="res://entity/player/player.gd" id="1_e6ar1"]
@@ -8,24 +9,32 @@
 [ext_resource type="Script" uid="uid://dp7eleq3tbu60" path="res://systems/FSM/Movement/jump.gd" id="6_wjhpj"]
 [ext_resource type="Script" uid="uid://idiiqxiv86pv" path="res://systems/FSM/Movement/fall.gd" id="7_2iqu4"]
 [ext_resource type="Script" uid="uid://bkxv10d63yxlh" path="res://systems/FSM/Movement/dash.gd" id="8_4btn6"]
-[ext_resource type="Script" uid="uid://doe85d6uh32gy" path="res://systems/FSM/Movement/wall_slide.gd" id="9_t2ln0"]
-[ext_resource type="Script" uid="uid://b2hhpcq2w68sp" path="res://systems/FSM/Movement/wall_jump.gd" id="10_qa8rf"]
+[ext_resource type="Script" uid="uid://cc5ukywqh8vlp" path="res://systems/Combat/Hitbox.gd" id="9_qa8rf"]
+[ext_resource type="Script" uid="uid://b4aflcqwg7prq" path="res://systems/Combat/Attack/AttackController.gd" id="9_t2ln0"]
+[ext_resource type="Script" uid="uid://cllc74ks1w3oq" path="res://systems/Combat/Hurtbox/Hurtbox.gd" id="11_klmji"]
+[ext_resource type="Script" uid="uid://dy1w670xhvj0h" path="res://systems/Combat/Health.gd" id="12_wltfy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e6ar1"]
 radius = 56.22277
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4btn6"]
+size = Vector2(39, 68)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t2ln0"]
+size = Vector2(113, 113)
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("health")]
 script = ExtResource("1_e6ar1")
 GRAVITY = 1000.0
 MAX_FALL_SPEED = 1000.0
 SPEED = 500.0
 JUMP_DIST = 700.0
 ACCELERATION = 300.0
-FRICTION = 100.0
-hasDoubJump = true
-hasDash = true
-dashDist = 300.0
-dashDur = 0.2
+FRICTION = 50.0
+hasDoubJump = null
+hasDash = null
+hasWallJump = null
+health = NodePath("Health")
 
 [node name="DebugState" type="Label" parent="."]
 offset_left = -64.0
@@ -33,6 +42,7 @@ offset_top = -112.0
 offset_right = 64.0
 offset_bottom = -89.0
 horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="Sprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_hsefk")
@@ -77,5 +87,36 @@ script = ExtResource("10_qa8rf")
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)
 position_smoothing_enabled = true
+
+[node name="Combat" type="Node2D" parent="."]
+
+[node name="BasicAttack" type="Node2D" parent="Combat"]
+
+[node name="Hitbox" type="Area2D" parent="Combat/BasicAttack"]
+collision_layer = 2
+script = ExtResource("9_qa8rf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Combat/BasicAttack/Hitbox"]
+position = Vector2(-102.5, -4)
+shape = SubResource("RectangleShape2D_4btn6")
+debug_color = Color(0.4433813, 0.5950625, 0.17946318, 0.41960785)
+
+[node name="AttackController" type="Node" parent="Combat/BasicAttack" node_paths=PackedStringArray("hitbox")]
+script = ExtResource("9_t2ln0")
+hitbox = NodePath("../Hitbox")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_mask = 2
+script = ExtResource("11_klmji")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_t2ln0")
+debug_color = Color(0.1686568, 0.6299228, 0.39308715, 0.41960785)
+
+[node name="Abilities" type="Node" parent="."]
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("12_wltfy")
 
 [connection signal="timeout" from="FSM/Fall/CoyoteTimer" to="FSM/Fall" method="_on_coyote_timer_timeout"]

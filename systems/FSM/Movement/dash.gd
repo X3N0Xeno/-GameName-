@@ -3,37 +3,22 @@ class_name StateDash
 
 @export var player : Player
 var dash_timer : float 
-var dash_speed = 0.0
-var dash_start = Vector2.ZERO
 
 
 func enterState():
-	dash_timer = player.dashDur
-	dash_speed = player.dashDist / player.dashDur
-	dash_start = player.global_position
-	player.velocity = Vector2(player.last_dir * dash_speed, 0)
 	player.justDashed = true
+	dash_timer = player.dashDur
 
 func updateState(delta : float):
 	dash_timer -= delta
-	#dash_speed = player.dashDist / player.dashDur
+	var dash_speed = player.dashDist / player.dashDur
 	player.velocity.x = player.last_dir * dash_speed
 	player.velocity.y = 0
-	
-	var traveled = player.global_position.distance_to(dash_start)
-	if traveled >= player.dashDist or dash_timer <= 0.0:
+	if dash_timer <= 0.0:
+		#Handle Fall and Idle
 		if player.is_on_floor():
 			transition.emit(self, "Idle")
-		else:
+		else :
+			#player.velocity.y > 1
 			transition.emit(self, "Fall")
-	elif Input.is_action_just_pressed("dash") and player.justDashed == false and player.hasDash:
-		transition.emit(self, "Dash")
-	
-	#if dash_timer <= 0.0:
-		##Handle Fall and Idle
-		#if player.is_on_floor():
-			#transition.emit(self, "Idle")
-		#else :
-			##player.velocity.y > 1
-			#transition.emit(self, "Fall")
 	player.move_and_slide()

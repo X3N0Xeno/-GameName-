@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://g08ql5rx0rod"]
+[gd_scene load_steps=10 format=3 uid="uid://g08ql5rx0rod"]
 
 [ext_resource type="Script" uid="uid://u8os1uwcodsh" path="res://entity/player/player.gd" id="1_e6ar1"]
 [ext_resource type="Texture2D" uid="uid://d257ffddlidy4" path="res://icon.svg" id="1_hsefk"]
@@ -8,23 +8,18 @@
 [ext_resource type="Script" uid="uid://dp7eleq3tbu60" path="res://systems/FSM/Movement/jump.gd" id="6_wjhpj"]
 [ext_resource type="Script" uid="uid://idiiqxiv86pv" path="res://systems/FSM/Movement/fall.gd" id="7_2iqu4"]
 [ext_resource type="Script" uid="uid://bkxv10d63yxlh" path="res://systems/FSM/Movement/dash.gd" id="8_4btn6"]
-[ext_resource type="Script" uid="uid://doe85d6uh32gy" path="res://systems/FSM/Movement/wall_slide.gd" id="9_t2ln0"]
-[ext_resource type="Script" uid="uid://b2hhpcq2w68sp" path="res://systems/FSM/Movement/wall_jump.gd" id="10_qa8rf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e6ar1"]
 radius = 56.22277
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_e6ar1")
-GRAVITY = 1000.0
-MAX_FALL_SPEED = 1000.0
 SPEED = 500.0
-JUMP_DIST = 700.0
+JUMP_VELOCITY = 600.0
+JUMP_DIST = 1000.0
 ACCELERATION = 300.0
-FRICTION = 100.0
-hasDoubJump = true
-hasDash = true
-dashDist = 300.0
+FRICTION = 50.0
+dashDist = 200.0
 dashDur = 0.2
 
 [node name="DebugState" type="Label" parent="."]
@@ -64,15 +59,9 @@ player = NodePath("../..")
 wait_time = 0.3
 one_shot = true
 
-[node name="Dash" type="Node" parent="FSM" node_paths=PackedStringArray("player")]
+[node name="Dash" type="Node" parent="FSM"]
 script = ExtResource("8_4btn6")
 player = NodePath("../..")
-
-[node name="WallSlide" type="Node" parent="FSM"]
-script = ExtResource("9_t2ln0")
-
-[node name="WallJump" type="Node" parent="FSM"]
-script = ExtResource("10_qa8rf")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)

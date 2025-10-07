@@ -6,15 +6,12 @@ class_name  StateFall
 
 
 func enterState():
-	player.isFalling = true
 	coyoteTimer.start()
 
 func updateState(_delta : float):
 	if Input.is_action_pressed("mov_left") or Input.is_action_pressed("mov_right"):
 		transition.emit(self, "Run")
-	elif Input.is_action_just_pressed("dash") and player.justDashed == false and player.hasDash:
-		transition.emit(self, "Dash")
-	
+		
 	if player.is_on_floor():
 		#Reinitialize variables to default when player touches ground
 		transition.emit(self, "Idle")

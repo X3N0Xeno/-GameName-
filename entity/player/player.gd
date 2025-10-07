@@ -23,18 +23,6 @@ var jump_ctr : int = 0
 
 func _physics_process(delta: float) -> void:
 	#print("PLAYER SCRIPT DEBUG: ", canCoyote)
-<<<<<<< HEAD
-=======
-	#print("PLAYER SCRIPT DEBUG: ", last_dir)
-	if last_dir == 1:
-		if max_velx < velocity.x:
-			max_velx = velocity.x
-	else:
-		if -max_velx > velocity.x:
-			max_velx = velocity.x
-		
-	#print("PLAYER SCRIPT DEBUG: MAX VELOCITY X IS ", max_velx)
->>>>>>> parent of 31aae2b (Merge pull request #3 from X3N0Xeno/player-movement)
 	StateLabel.text = FSM.cur_state.name
 	friction()
 	

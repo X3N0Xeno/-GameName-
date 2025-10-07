@@ -18,17 +18,9 @@ func updateState(_delta : float):
 			transition.emit(self, "Fall")
 	
 	
-<<<<<<< HEAD
 	if player.velocity.length() <= .1 and player.is_on_floor():
 		transition.emit(self, "Idle")
 	
-=======
-	if player.is_on_floor():
-		player.justDashed = false
-		if player.velocity.length() <= .1:
-			transition.emit(self, "Idle")
-
->>>>>>> parent of 31aae2b (Merge pull request #3 from X3N0Xeno/player-movement)
 	if Input.is_action_just_pressed("jump"):
 		if player.is_on_floor():
 			player.jump_ctr = 0

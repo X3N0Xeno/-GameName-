@@ -93,6 +93,7 @@ tile_map_data = PackedByteArray("AAD7/wYAAQAAAAAAAAD8/wYAAQAAAAAAAAD9/wYAAQABAAA
 tile_set = SubResource("TileSet_wtcfe")
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 [node name="Label" type="Label" parent="."]
 offset_left = -4746.0
@@ -136,3 +137,5 @@ horizontal_alignment = 1
 >>>>>>> parent of 31aae2b (Merge pull request #3 from X3N0Xeno/player-movement)
 =======
 >>>>>>> parent of 31aae2b (Merge pull request #3 from X3N0Xeno/player-movement)
+=======
+>>>>>>> parent of f82a983 (QoL Jump, Fall and Dash)

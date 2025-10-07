@@ -19,8 +19,6 @@ JUMP_VELOCITY = 600.0
 JUMP_DIST = 1000.0
 ACCELERATION = 300.0
 FRICTION = 50.0
-dashDist = 200.0
-dashDur = 0.2
 
 [node name="DebugState" type="Label" parent="."]
 offset_left = -64.0
@@ -61,7 +59,6 @@ one_shot = true
 
 [node name="Dash" type="Node" parent="FSM"]
 script = ExtResource("8_4btn6")
-player = NodePath("../..")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)

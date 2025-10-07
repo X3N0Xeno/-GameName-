@@ -131,3 +131,12 @@ scale = Vector2(3, 3)
 text = "'Super' Dash
 About 17 blocks"
 horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="."]
+offset_left = -6664.0005
+offset_top = 285.0
+offset_right = -6420.0005
+offset_bottom = 360.0
+scale = Vector2(3, 3)
+text = "Dash While Running, then jump"
+horizontal_alignment = 1

@@ -17,7 +17,7 @@ func updateState(_delta : float):
 	elif Input.is_action_just_pressed("dash") and player.justDashed == false and player.hasDash:
 		transition.emit(self, "Dash")
 	
-	if Input.is_action_just_pressed("jump"):
+	if Input.is_action_just_pressed("jump") and player.hasDoubJump and player.jump_ctr < 2:
 		transition.emit(self, "jump")
 	
 	if player.is_on_ceiling():
@@ -27,5 +27,9 @@ func updateState(_delta : float):
 		transition.emit(self, "Fall")
 	elif Input.is_action_just_pressed("mov_left") or Input.is_action_just_pressed("mov_right"):
 		transition.emit(self, "Run")
+	
+	if player.is_on_wall():
+		#print("State Jump: Player is on wall")
+		transition.emit(self, "WallSlide")
 	
 	player.move_and_slide()

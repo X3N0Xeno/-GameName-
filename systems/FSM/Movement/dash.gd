@@ -26,8 +26,9 @@ func updateState(delta : float):
 			transition.emit(self, "Idle")
 		else:
 			transition.emit(self, "Fall")
-	elif Input.is_action_just_pressed("dash") and player.justDashed == false and player.hasDash:
-		transition.emit(self, "Dash")
+	#elif Input.is_action_just_pressed("dash") and player.justDashed == false and player.hasDash:
+		##transition.emit(self, "Dash")
+		#print("?????")
 	
 	#if dash_timer <= 0.0:
 		##Handle Fall and Idle

@@ -24,7 +24,9 @@ func updateState(_delta : float):
 			transition.emit(self, "Idle")
 	else:
 		player.isFalling = true
-
+	if player.is_on_wall():
+		#print("State Run: Player is on wall")
+		transition.emit(self, "WallSlide")
 	if Input.is_action_just_pressed("jump"):
 		if player.is_on_floor():
 			player.jump_ctr = 0

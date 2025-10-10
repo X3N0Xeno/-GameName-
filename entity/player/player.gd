@@ -20,6 +20,14 @@ class_name Player
 @export var	dashDist : float
 @export var dashDur : float
 
+@export_category("Wall Jump Stats")
+@export var wallGravity : float
+@export var wallForce : float
+@export var wallCoyote : float
+@export var wallCoyoteTimer : float
+@export var wallJumpLock : float
+@export var wallJumpLockTime : float
+
 @onready var FSM : StateMachine = $FSM
 @onready var StateLabel : Label = $DebugState
 
@@ -29,13 +37,17 @@ var isFalling : bool = false
 var jump_ctr : int = 0
 var justDashed : bool = false
 var direction : float
+var facing_dir : int
 var last_dir : float = 1.0 #WARNING! THIS IS INITIALIZED TO 1.0 TO FORCE THE PLAYER TO FACE RIGHT
 
 ##Testing
 var max_velx : float = 0.0
 
 func _physics_process(delta: float) -> void:
-	
+	if velocity.x > 0:
+		facing_dir = 1;
+	elif velocity.x < 0:
+		facing_dir = -1
 	#print("PLAYER SCRIPT DEBUG: ", canCoyote)
 	#print("PLAYER SCRIPT DEBUG: ", last_dir)
 	#print("PLAYER SCRIPT DEBUG: ", velocity.y)

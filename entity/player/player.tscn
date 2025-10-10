@@ -24,8 +24,11 @@ ACCELERATION = 300.0
 FRICTION = 100.0
 hasDoubJump = true
 hasDash = true
+hasWallJump = true
 dashDist = 300.0
 dashDur = 0.2
+wallGravity = 300.0
+wallForce = 500.0
 
 [node name="DebugState" type="Label" parent="."]
 offset_left = -64.0
@@ -68,11 +71,13 @@ one_shot = true
 script = ExtResource("8_4btn6")
 player = NodePath("../..")
 
-[node name="WallSlide" type="Node" parent="FSM"]
+[node name="WallSlide" type="Node" parent="FSM" node_paths=PackedStringArray("player")]
 script = ExtResource("9_t2ln0")
+player = NodePath("../..")
 
-[node name="WallJump" type="Node" parent="FSM"]
+[node name="WallJump" type="Node" parent="FSM" node_paths=PackedStringArray("player")]
 script = ExtResource("10_qa8rf")
+player = NodePath("../..")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.5, 0.5)

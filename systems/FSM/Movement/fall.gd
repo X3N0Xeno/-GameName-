@@ -26,6 +26,10 @@ func updateState(_delta : float):
 			#print("Player State Fall: double jumped")
 			player.jump_ctr+=1 #Prevents infinite jumping
 			transition.emit(self, "Jump")
+	
+	if player.is_on_wall():
+		#print("State Fall: Player is on wall")
+		transition.emit(self, "WallSlide")
 	player.move_and_slide()
 
 func _on_coyote_timer_timeout() -> void:

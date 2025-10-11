@@ -16,19 +16,19 @@ radius = 56.22277
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_e6ar1")
-GRAVITY = 1000.0
-MAX_FALL_SPEED = 1000.0
+GRAVITY = 1500.0
+MAX_FALL_SPEED = 1500.0
 SPEED = 500.0
-JUMP_DIST = 700.0
+JUMP_DIST = 800.0
 ACCELERATION = 300.0
-FRICTION = 100.0
-hasDoubJump = true
+FRICTION = 200.0
 hasDash = true
 hasWallJump = true
 dashDist = 300.0
 dashDur = 0.2
-wallGravity = 300.0
-wallForce = 500.0
+wallGravity = 500.0
+wallForceY = 800.0
+wallForceX = 500.0
 
 [node name="DebugState" type="Label" parent="."]
 offset_left = -64.0

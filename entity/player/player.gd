@@ -22,11 +22,14 @@ class_name Player
 
 @export_category("Wall Jump Stats")
 @export var wallGravity : float
-@export var wallForce : float
+@export var wallForceY : float
+@export var wallForceX : float
 @export var wallCoyote : float
 @export var wallCoyoteTimer : float
 @export var wallJumpLock : float
 @export var wallJumpLockTime : float
+var wall_jump_grace_timer := 0.0
+@export var WALL_JUMP_GRACE_TIME := 0.15
 
 @onready var FSM : StateMachine = $FSM
 @onready var StateLabel : Label = $DebugState
@@ -43,11 +46,18 @@ var last_dir : float = 1.0 #WARNING! THIS IS INITIALIZED TO 1.0 TO FORCE THE PLA
 ##Testing
 var max_velx : float = 0.0
 
+
 func _physics_process(delta: float) -> void:
-	if velocity.x > 0:
-		facing_dir = 1;
-	elif velocity.x < 0:
+	if is_on_wall():
+		wall_jump_grace_timer = WALL_JUMP_GRACE_TIME
+	else:
+		wall_jump_grace_timer = max(0, wall_jump_grace_timer - delta)
+	
+	
+	if Input.is_action_just_pressed("mov_left"):
 		facing_dir = -1
+	elif Input.is_action_just_pressed("mov_right"):
+		facing_dir = 1
 	#print("PLAYER SCRIPT DEBUG: ", canCoyote)
 	#print("PLAYER SCRIPT DEBUG: ", last_dir)
 	#print("PLAYER SCRIPT DEBUG: ", velocity.y)

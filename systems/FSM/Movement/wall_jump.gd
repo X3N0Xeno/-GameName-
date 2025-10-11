@@ -1,15 +1,8 @@
 extends State
 class_name StateWallJump
 
-@export var player : CharacterBody2D
+@export var player : Player
 var dir : int = 1
-
-#fix wall jump
-#make it so you can walljump up on 1 wall
-#fix errors in transitions wallslide-run and many others caused by leaning on a wall
-#fix jump errors
-#change gravity and wall force
-#maybe add a separate thing for upwards velocity jump
 
 func enterState():
 	if player.is_on_wall():
@@ -17,26 +10,41 @@ func enterState():
 	else:
 		dir = player.facing_dir
 	player.isFalling = false
-	player.velocity.y = player.wallForce * -1
+	player.velocity.y = player.wallForceY * -1
+	
 	player.jump_ctr += 1
 	player.canCoyote = false
 
 func updateState(_delta : float):
-	player.velocity.x = player.wallForce*1.5 * dir
-	if Input.is_action_just_released("jump") and player.velocity.y < 0:
+	##State Implementation
+	#Movement x
+	player.velocity.x = player.wallForceX * 1.5 * dir
+	
+	#Movement [Directional]
+	if player.direction:
+		player.velocity.x = move_toward(player.velocity.x, player.direction * player.SPEED, player.ACCELERATION)
+	
+	#Variable Jump Height
+	if (Input.is_action_just_released("jump") and player.velocity.y < 0):
 		player.velocity.y *= 0.3
-	elif Input.is_action_just_pressed("dash") and player.justDashed == false and player.hasDash:
+	
+	#Ceiling Bump
+	if player.is_on_ceiling():
+		player.velocity.y = 1
+	
+	##State Transitions
+	
+	#Dash
+	if Input.is_action_just_pressed("dash") and player.justDashed == false and player.hasDash:
+		player.last_dir *= -1
 		transition.emit(self, "Dash")
 	
+	#Double Jump
 	if Input.is_action_just_pressed("jump") and player.hasDoubJump and player.jump_ctr < 2:
+		print("In Wall Jump State: Double Jump")
 		transition.emit(self, "jump")
 	
-	if player.is_on_ceiling():
-			player.velocity.y = 1
-	
+	#Fall
 	if player.velocity.y > 0 and !player.is_on_floor():
 		transition.emit(self, "Fall")
-	elif Input.is_action_just_pressed("mov_left") or Input.is_action_just_pressed("mov_right") and not player.is_on_wall():
-		transition.emit(self, "Run")
-	
 	player.move_and_slide()

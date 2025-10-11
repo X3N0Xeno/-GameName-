@@ -5,40 +5,41 @@ class_name StateRun
 
 func enterState():
 	
-	#player.isFalling = false
+	player.isFalling = false
 	pass
 
 func updateState(_delta : float):
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
+	##State Implementation
+	#Movement
 	if player.direction:
 		player.velocity.x = move_toward(player.velocity.x, player.direction * player.SPEED, player.ACCELERATION)
-		#direction * player.SPEED
-	else:
-		if player.velocity.y > 1:
-			transition.emit(self, "Fall")
-			
+	
+	##State Transitions
+	#Ground
 	if player.is_on_floor():
 		player.justDashed = false
-		if player.velocity.length() <= .1 and not (Input.is_action_pressed("mov_left") or Input.is_action_pressed("mov_right")):
+		
+		#Idle
+		if player.velocity.length() <= .1 and not player.direction:
 			transition.emit(self, "Idle")
-	else:
-		player.isFalling = true
-	if player.is_on_wall():
-		#print("State Run: Player is on wall")
-		transition.emit(self, "WallSlide")
-	if Input.is_action_just_pressed("jump"):
-		if player.is_on_floor():
+		
+		#Jump
+		elif Input.is_action_just_pressed("jump"):
 			player.jump_ctr = 0
 			transition.emit(self, "Jump")
-			
-		#Implement double jump
-		elif player.hasDoubJump and player.jump_ctr <= 1:
-			player.jump_ctr+=1 #Prevents infinite jumping
-			transition.emit(self, "Jump")
-			
-	elif Input.is_action_just_pressed("dash") and player.justDashed == false and player.hasDash:
-		transition.emit(self, "Dash")
-
+		
+		#Dash
+		elif Input.is_action_just_pressed("dash") and player.justDashed == false and player.hasDash:
+			transition.emit(self, "Dash")
+	#Air - Fall
+	else:
+		if player.velocity.y > 1 and not player.direction:
+			player.isFalling = true
+			transition.emit(self, "Fall")
+	
+	#WallSlide
+	if player.is_on_wall() and not player.is_on_floor():
+		#print("State Run: Player is on wall")
+		transition.emit(self, "WallSlide")
 
 	player.move_and_slide()

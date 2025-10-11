@@ -2,34 +2,44 @@ extends State
 class_name StateJump
 
 @export var player : Player
+var can_double_jump := false
 
 func enterState():
-	#player.velocity.y = sqrt(2 * player.get_gravity().y * player.JUMP_DIST)
 	player.isFalling = false
 	player.velocity.y = player.JUMP_DIST * -1
 	player.jump_ctr += 1
 	player.canCoyote = false
+	
+	# Add a delay before allowing double jump
+	await get_tree().create_timer(0.1).timeout
+	can_double_jump = true
 
 func updateState(_delta : float):
+	##State Implementation
 	#Variable jump height
 	if Input.is_action_just_released("jump") and player.velocity.y < 0:
-		player.velocity.y *= 0.3
-	elif Input.is_action_just_pressed("dash") and player.justDashed == false and player.hasDash:
+		player.velocity.y *= 0.2
+	
+	#Ceiling Bump
+	if player.is_on_ceiling():
+		player.velocity.y = 1
+	
+	#Movement
+	if player.direction:
+		player.velocity.x = move_toward(player.velocity.x, player.direction * player.SPEED, player.ACCELERATION)
+	
+	##State Transitions
+	#Dash
+	if Input.is_action_just_pressed("dash") and player.justDashed == false and player.hasDash:
 		transition.emit(self, "Dash")
 	
-	if Input.is_action_just_pressed("jump") and player.hasDoubJump and player.jump_ctr < 2:
-		transition.emit(self, "jump")
+	#Double Jump
+	if can_double_jump and Input.is_action_just_pressed("jump") and player.hasDoubJump and player.jump_ctr < 2:
+		print("In Jump State: Double Jump")
+		transition.emit(self, "Jump")
 	
-	if player.is_on_ceiling():
-			player.velocity.y = 1
-	
-	if player.velocity.y > 0 and !player.is_on_floor():
+	#Fall
+	if player.velocity.y > 0 and not player.is_on_floor():
 		transition.emit(self, "Fall")
-	elif Input.is_action_just_pressed("mov_left") or Input.is_action_just_pressed("mov_right"):
-		transition.emit(self, "Run")
-	
-	if player.is_on_wall():
-		#print("State Jump: Player is on wall")
-		transition.emit(self, "WallSlide")
 	
 	player.move_and_slide()

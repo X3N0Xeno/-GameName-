@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=4 uid="uid://dhmc4d3x3gm8u"]
+
+[ext_resource type="PackedScene" uid="uid://g08ql5rx0rod" path="res://entity/player/player.tscn" id="1_errlg"]
+[ext_resource type="Texture2D" uid="uid://d257ffddlidy4" path="res://icon.svg" id="2_bl13t"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bl13t"]
+texture = ExtResource("2_bl13t")
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+7:0/0 = 0
+7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+7:7/0 = 0
+7:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+7:6/0 = 0
+7:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:7/0 = 0
+0:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:7/0 = 0
+1:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:4/0 = 0
+0:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_iyx0m"]
+tile_shape = 2
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_bl13t")
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(5, -4)
+
+[node name="Player" parent="." instance=ExtResource("1_errlg")]
+position = Vector2(373, 45)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+scale = Vector2(4.84, 4.84)
+tile_map_data = PackedByteArray("AAADAAIAAAABAAcAAAAEAAIAAAABAAcAAAAFAAIAAAABAAcAAAABAAEAAAAAAAQAAAACAAEAAAAAAAQAAAACAAAAAAAAAAQAAAACAP//AAAAAAQAAAACAP7/AAAAAAQAAAABAP//AAAAAAQAAAACAAIAAAABAAcAAAABAAIAAAABAAcAAAAAAAEAAAAAAAQAAAABAAAAAAAAAAQAAAAAAAIAAAAAAAcAAAAAAAAAAAAAAAQAAAAAAP//AAAAAAQAAAAAAP7/AAAAAAQAAAABAP7/AAAAAAQAAAACAP3/AAABAAAAAAADAP3/AAABAAAAAAAEAP3/AAABAAAAAAAFAP3/AAABAAAAAAAGAP3/AAABAAAAAAAHAP3/AAABAAAAAAAAAP3/AAAAAAAAAAABAP3/AAABAAAAAAAGAAIAAAABAAcAAAAHAAIAAAABAAcAAAAIAAIAAAABAAcAAAAIAP3/AAABAAAAAAA=")
+tile_set = SubResource("TileSet_iyx0m")
+
+[node name="ColorRect" type="ColorRect" parent="TileMapLayer"]
+offset_left = 171.07437
+offset_top = 12.603302
+offset_right = 482.02478
+offset_bottom = 52.6033
+color = Color(0, 0, 0, 1)

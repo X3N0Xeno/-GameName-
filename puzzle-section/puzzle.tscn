@@ -1,0 +1,292 @@
+[gd_scene load_steps=10 format=3 uid="uid://bvwv7xkh64lni"]
+
+[ext_resource type="Texture2D" uid="uid://ddcvvpb6iplfo" path="res://icon.svg" id="1_77j1r"]
+[ext_resource type="Script" uid="uid://doogssvlwjjge" path="res://piece.gd" id="2_hgotr"]
+[ext_resource type="Texture2D" uid="uid://boy6yrabk3n2p" path="res://1WOmargin.png" id="3_hrnaw"]
+[ext_resource type="Texture2D" uid="uid://dhvswfswo28oh" path="res://2WOmargin.png" id="4_dcmwq"]
+[ext_resource type="Texture2D" uid="uid://bvx2qqdxsuui8" path="res://3WOmargin.png" id="5_hrnaw"]
+[ext_resource type="Texture2D" uid="uid://lmrucx2rce3y" path="res://4WOmargin.png" id="6_dcmwq"]
+[ext_resource type="Texture2D" uid="uid://d1xo2lkdq5djr" path="res://5WOmargin.png" id="7_soxwv"]
+[ext_resource type="Texture2D" uid="uid://oigyff8dkld4" path="res://6WOmargin.png" id="8_hrnaw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_77j1r"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+scale = Vector2(3.2089183, 2.3681455)
+
+[node name="Fragment 1" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(-449, -213)
+texture = ExtResource("1_77j1r")
+script = ExtResource("2_hgotr")
+
+[node name="TextureRect" type="TextureRect" parent="Fragment 1"]
+offset_left = -64.0
+offset_top = -63.0
+offset_right = 111.0
+offset_bottom = 72.0
+scale = Vector2(0.873177, 0.9808505)
+texture = ExtResource("3_hrnaw")
+
+[node name="Button" type="Button" parent="Fragment 1"]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = -1
+anchor_left = 0.008
+anchor_top = 0.008
+anchor_right = 0.008
+anchor_bottom = 0.008
+offset_left = -64.023994
+offset_top = -64.024
+offset_right = 62.976
+offset_bottom = 62.976
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Right" type="Area2D" parent="Fragment 1"]
+position = Vector2(64, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fragment 1/Right"]
+shape = SubResource("RectangleShape2D_77j1r")
+
+[node name="Down" type="Area2D" parent="Fragment 1"]
+position = Vector2(0, 64)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fragment 1/Down"]
+shape = SubResource("RectangleShape2D_77j1r")
+
+[node name="Fragment 2" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(445, -222)
+texture = ExtResource("1_77j1r")
+script = ExtResource("2_hgotr")
+
+[node name="TextureRect" type="TextureRect" parent="Fragment 2"]
+offset_left = -85.0
+offset_top = -63.0
+offset_right = 65.0
+offset_bottom = 80.0
+scale = Vector2(0.9890799, 0.9962199)
+texture = ExtResource("4_dcmwq")
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="Fragment 2"]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = -1
+anchor_left = 0.008
+anchor_top = 0.008
+anchor_right = 0.008
+anchor_bottom = 0.008
+offset_left = -64.023994
+offset_top = -64.024
+offset_right = 62.976
+offset_bottom = 62.976
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Left" type="Area2D" parent="Fragment 2"]
+position = Vector2(-64, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fragment 2/Left"]
+shape = SubResource("RectangleShape2D_77j1r")
+
+[node name="Down" type="Area2D" parent="Fragment 2"]
+position = Vector2(0, 64)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fragment 2/Down"]
+shape = SubResource("RectangleShape2D_77j1r")
+
+[node name="Fragment 3" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(-447, 3)
+texture = ExtResource("1_77j1r")
+script = ExtResource("2_hgotr")
+
+[node name="TextureRect" type="TextureRect" parent="Fragment 3"]
+offset_left = -65.0
+offset_top = -73.00001
+offset_right = 77.0
+offset_bottom = 74.99999
+scale = Vector2(1.0047388, 0.99701667)
+texture = ExtResource("5_hrnaw")
+
+[node name="Button" type="Button" parent="Fragment 3"]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = -1
+anchor_left = 0.008
+anchor_top = 0.008
+anchor_right = 0.008
+anchor_bottom = 0.008
+offset_left = -64.023994
+offset_top = -64.024
+offset_right = 62.976
+offset_bottom = 62.976
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Down" type="Area2D" parent="Fragment 3"]
+position = Vector2(0, 64)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fragment 3/Down"]
+shape = SubResource("RectangleShape2D_77j1r")
+
+[node name="Right" type="Area2D" parent="Fragment 3"]
+position = Vector2(64, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fragment 3/Right"]
+shape = SubResource("RectangleShape2D_77j1r")
+
+[node name="Top" type="Area2D" parent="Fragment 3"]
+position = Vector2(0, -64)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fragment 3/Top"]
+shape = SubResource("RectangleShape2D_77j1r")
+
+[node name="Fragment 4" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(447, 14)
+texture = ExtResource("1_77j1r")
+script = ExtResource("2_hgotr")
+
+[node name="TextureRect" type="TextureRect" parent="Fragment 4"]
+offset_left = -79.0
+offset_top = -74.0
+offset_right = 65.0
+offset_bottom = 73.0
+scale = Vector2(0.99662614, 0.9990552)
+texture = ExtResource("6_dcmwq")
+
+[node name="Button" type="Button" parent="Fragment 4"]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = -1
+anchor_left = 0.008
+anchor_top = 0.008
+anchor_right = 0.008
+anchor_bottom = 0.008
+offset_left = -64.023994
+offset_top = -64.024
+offset_right = 62.976
+offset_bottom = 62.976
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Left" type="Area2D" parent="Fragment 4"]
+position = Vector2(-64, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fragment 4/Left"]
+shape = SubResource("RectangleShape2D_77j1r")
+
+[node name="Down" type="Area2D" parent="Fragment 4"]
+position = Vector2(0, 64)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fragment 4/Down"]
+shape = SubResource("RectangleShape2D_77j1r")
+
+[node name="Top" type="Area2D" parent="Fragment 4"]
+position = Vector2(0, -64)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fragment 4/Top"]
+shape = SubResource("RectangleShape2D_77j1r")
+
+[node name="Fragment 5" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(-438, 218)
+texture = ExtResource("1_77j1r")
+script = ExtResource("2_hgotr")
+
+[node name="TextureRect" type="TextureRect" parent="Fragment 5"]
+offset_left = -64.0
+offset_top = -74.0
+offset_right = 72.0
+offset_bottom = 67.0
+scale = Vector2(0.9834239, 0.9838752)
+texture = ExtResource("7_soxwv")
+
+[node name="Button" type="Button" parent="Fragment 5"]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = -1
+anchor_left = 0.008
+anchor_top = 0.008
+anchor_right = 0.008
+anchor_bottom = 0.008
+offset_left = -64.023994
+offset_top = -64.024
+offset_right = 62.976
+offset_bottom = 62.976
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Right" type="Area2D" parent="Fragment 5"]
+position = Vector2(64, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fragment 5/Right"]
+shape = SubResource("RectangleShape2D_77j1r")
+
+[node name="Top" type="Area2D" parent="Fragment 5"]
+position = Vector2(0, -64)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fragment 5/Top"]
+shape = SubResource("RectangleShape2D_77j1r")
+
+[node name="Fragment 6" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(437, 228)
+texture = ExtResource("1_77j1r")
+script = ExtResource("2_hgotr")
+
+[node name="TextureRect" type="TextureRect" parent="Fragment 6"]
+offset_left = -75.0
+offset_top = -79.0
+offset_right = 68.0
+offset_bottom = 65.0
+scale = Vector2(0.98416907, 0.99475485)
+texture = ExtResource("8_hrnaw")
+
+[node name="Button" type="Button" parent="Fragment 6"]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = -1
+anchor_left = 0.008
+anchor_top = 0.008
+anchor_right = 0.008
+anchor_bottom = 0.008
+offset_left = -64.023994
+offset_top = -64.024
+offset_right = 62.976
+offset_bottom = 62.976
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Left" type="Area2D" parent="Fragment 6"]
+position = Vector2(-64, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fragment 6/Left"]
+shape = SubResource("RectangleShape2D_77j1r")
+
+[node name="Top" type="Area2D" parent="Fragment 6"]
+position = Vector2(0, -64)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Fragment 6/Top"]
+shape = SubResource("RectangleShape2D_77j1r")
+
+[connection signal="button_down" from="Fragment 1/Button" to="Fragment 1" method="_on_button_button_down"]
+[connection signal="button_up" from="Fragment 1/Button" to="Fragment 1" method="_on_button_button_up"]
+[connection signal="area_entered" from="Fragment 1/Right" to="Fragment 1" method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Fragment 1/Down" to="Fragment 1" method="_on_area_2d_area_entered"]
+[connection signal="button_down" from="Fragment 2/Button" to="Fragment 2" method="_on_button_button_down"]
+[connection signal="button_up" from="Fragment 2/Button" to="Fragment 2" method="_on_button_button_up"]
+[connection signal="area_entered" from="Fragment 2/Left" to="Fragment 2" method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Fragment 2/Down" to="Fragment 2" method="_on_area_2d_area_entered"]
+[connection signal="button_down" from="Fragment 3/Button" to="Fragment 3" method="_on_button_button_down"]
+[connection signal="button_up" from="Fragment 3/Button" to="Fragment 3" method="_on_button_button_up"]
+[connection signal="area_entered" from="Fragment 3/Down" to="Fragment 3" method="_on_area_2d_area_entered"]
+[connection signal="button_down" from="Fragment 4/Button" to="Fragment 4" method="_on_button_button_down"]
+[connection signal="button_up" from="Fragment 4/Button" to="Fragment 4" method="_on_button_button_up"]
+[connection signal="area_entered" from="Fragment 4/Left" to="Fragment 4" method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Fragment 4/Down" to="Fragment 4" method="_on_area_2d_area_entered"]
+[connection signal="button_down" from="Fragment 5/Button" to="Fragment 5" method="_on_button_button_down"]
+[connection signal="button_up" from="Fragment 5/Button" to="Fragment 5" method="_on_button_button_up"]
+[connection signal="button_down" from="Fragment 6/Button" to="Fragment 6" method="_on_button_button_down"]
+[connection signal="button_up" from="Fragment 6/Button" to="Fragment 6" method="_on_button_button_up"]
+[connection signal="area_entered" from="Fragment 6/Left" to="Fragment 6" method="_on_area_2d_area_entered"]

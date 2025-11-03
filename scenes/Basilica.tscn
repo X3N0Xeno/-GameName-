@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://xvhmg3gj58so" path="res://assets/sprites/world/Basilica/Torch/Torch.png" id="20_v6qfd"]
 [ext_resource type="Texture2D" uid="uid://bgt47olj0yxks" path="res://assets/sprites/world/Basilica/chandelier.png" id="21_w6nbt"]
 
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_niuwy"]
 texture = ExtResource("3_skcl5")
 texture_region_size = Vector2i(8, 8)

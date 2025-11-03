@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://drc67vy51pti5"]
+
+[ext_resource type="Texture2D" uid="uid://ctd1noax7lgj4" path="res://HK.webp" id="1_infc1"]
+[ext_resource type="Script" uid="uid://ckyim2j1vt4em" path="res://Script/Ghosts.gd" id="1_rcd3j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hmvil"]
+atlas = ExtResource("1_infc1")
+region = Rect2(1, 797, 78, 93)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i0fno"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hmvil")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uf5dq"]
+radius = 16.0
+height = 52.0
+
+[node name="Ghost" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+collision_layer = 4
+script = ExtResource("1_rcd3j")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+sprite_frames = SubResource("SpriteFrames_i0fno")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CapsuleShape2D_uf5dq")
+
+[node name="Area2D" type="Area2D" parent="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Area2D"]
+shape = SubResource("CapsuleShape2D_uf5dq")

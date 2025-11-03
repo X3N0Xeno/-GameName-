@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6vac82k3vl2l"]
+
+[ext_resource type="PackedScene" uid="uid://b4mpprclvqx73" path="res://new-scenes/hitbox.tscn" id="1_7rty8"]
+
+[sub_resource type="MeshTexture" id="MeshTexture_oqx6m"]
+
+[node name="LapuLapu-Sword" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("MeshTexture_oqx6m")
+
+[node name="Hitbox" parent="." instance=ExtResource("1_7rty8")]

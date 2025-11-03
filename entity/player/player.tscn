@@ -1,27 +1,5 @@
 [gd_scene load_steps=41 format=4 uid="uid://g08ql5rx0rod"]
 
-[ext_resource type="Script" uid="uid://5wuiyx6sxfou" path="res://scenes/basilica.gd" id="1_lfiqg"]
-[ext_resource type="Texture2D" uid="uid://7g1jugfhupeh" path="res://assets/sprites/world/Basilica/cathedral_tileset.png" id="2_sy5vy"]
-[ext_resource type="Texture2D" uid="uid://cafks2i0vtti1" path="res://assets/sprites/world/Basilica/Basilica Full.png" id="3_pdt8u"]
-[ext_resource type="PackedScene" uid="uid://bu3mg3avqbfd1" path="res://scenes/breakable_wall.tscn" id="4_s1782"]
-[ext_resource type="PackedScene" uid="uid://bb6nopo7kq3n" path="res://scenes/platform.tscn" id="5_d0p3g"]
-[ext_resource type="Script" uid="uid://cjy8wx763joaw" path="res://scripts/altar_gate.gd" id="6_eqmyq"]
-[ext_resource type="Texture2D" uid="uid://clejbh4w1jcte" path="res://assets/sprites/world/Carreta/lpc_grave_markers_rework-1.3/PNG/32x32/grave_markers.png" id="7_ik82c"]
-[ext_resource type="Script" uid="uid://bk0ph0n4auhdi" path="res://scripts/clue_progression.gd" id="8_g0b1w"]
-[ext_resource type="Script" uid="uid://dif2h0d1kvatb" path="res://scripts/clue_popup.gd" id="9_lxjkg"]
-[ext_resource type="Script" uid="uid://oj0vmmnxu7ne" path="res://scripts/clue.gd" id="10_xdqay"]
-[ext_resource type="Texture2D" uid="uid://cldu5cxy24heh" path="res://assets/sprites/world/Basilica/Priest.png" id="11_fn6cm"]
-[ext_resource type="FontFile" uid="uid://c8xr0ihm8p4oj" path="res://assets/fonts/alagard/alagard.ttf" id="12_yyms2"]
-[ext_resource type="Texture2D" uid="uid://5k3bf1nnm8hw" path="res://assets/sprites/world/Basilica/bookshelf.png" id="13_fpwxu"]
-[ext_resource type="Script" uid="uid://c3esfdhftruqv" path="res://scripts/moving_barrier.gd" id="14_r6usc"]
-[ext_resource type="Script" uid="uid://sw50efav76hx" path="res://scenes/boss_manager.gd" id="15_qjg1v"]
-[ext_resource type="Script" uid="uid://c48gyy7uu7bnf" path="res://scenes/cameraManager.gd" id="16_3dig0"]
-[ext_resource type="PackedScene" uid="uid://b0t2q5erqiw0n" path="res://scenes/babaylan_(save).tscn" id="17_w78lx"]
-[ext_resource type="Texture2D" uid="uid://ces7eut1jaouf" path="res://assets/sprites/world/Basilica/download.png" id="18_uvoqt"]
-[ext_resource type="Texture2D" uid="uid://xvhmg3gj58so" path="res://assets/sprites/world/Basilica/Torch/Torch.png" id="19_gno2e"]
-[ext_resource type="Texture2D" uid="uid://bgt47olj0yxks" path="res://assets/sprites/world/Basilica/chandelier.png" id="20_sl517"]
-[ext_resource type="PackedScene" uid="uid://g08ql5rx0rod" path="res://entity/player/player.tscn" id="21_x87t8"]
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_niuwy"]
 texture = ExtResource("2_sy5vy")
 texture_region_size = Vector2i(8, 8)
@@ -1208,6 +1186,13 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("9_lxjkg")
+[node name="Sprite" type="Sprite2D" parent="."]
+z_index = 5
+texture = ExtResource("2_qa8rf")
+
+[node name="Colision" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.75)
+shape = SubResource("RectangleShape2D_klmji")
 
 [node name="Label" type="Label" parent="CanvasLayer/CluePopup2"]
 layout_mode = 0
@@ -1646,3 +1631,4 @@ shape = SubResource("RectangleShape2D_wtiy1")
 [connection signal="area_shape_entered" from="BattleTrigger" to="BossManager" method="_on_battle_trigger_area_shape_entered"]
 [connection signal="body_entered" from="DarkZoneTrigger" to="." method="_on_dark_zone_trigger_body_entered"]
 [connection signal="body_exited" from="DarkZoneTrigger" to="." method="_on_dark_zone_trigger_body_exited"]
+[connection signal="timeout" from="FSM/Fall/CoyoteTimer" to="FSM/Fall" method="_on_coyote_timer_timeout"]

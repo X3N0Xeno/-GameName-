@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://bu3mg3avqbfd1"]
+
+[ext_resource type="Script" uid="uid://c582rtahhfpse" path="res://breakable_wall.gd" id="1_ba5p1"]
+[ext_resource type="Texture2D" uid="uid://cvq50sr0tdcnm" path="res://assets/sprites/world/banhwa_dev_assets.png" id="2_odehn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tc6sb"]
+size = Vector2(3.9215088, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1leh5"]
+size = Vector2(5.3922424, 16.129028)
+
+[node name="BreakableWall2" type="StaticBody2D"]
+script = ExtResource("1_ba5p1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-9.536743e-07, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_odehn")
+region_enabled = true
+region_rect = Rect2(24, 8, 8, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_tc6sb")
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-0.24523926, 0)
+shape = SubResource("RectangleShape2D_1leh5")
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

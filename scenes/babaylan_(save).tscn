@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://b0t2q5erqiw0n"]
+
+[ext_resource type="Script" uid="uid://ewtbnlnmtkss" path="res://SavePoint.gd" id="1_eng0t"]
+[ext_resource type="Texture2D" uid="uid://bhifknueohrma" path="res://assets/sprites/world/Magician-Magi_Witch/Magician-Magi-Witch/Individual PNG/MainCharacter_LW_F1.png" id="2_apygc"]
+[ext_resource type="Texture2D" uid="uid://brlp1fvna5t8v" path="res://assets/sprites/world/Magician-Magi_Witch/Magician-Magi-Witch/Individual PNG/MainCharacter_LW_F2.png" id="3_6drmj"]
+[ext_resource type="Texture2D" uid="uid://cpru37lk32crd" path="res://assets/sprites/world/Magician-Magi_Witch/Magician-Magi-Witch/Individual PNG/MainCharacter_LW_F9.png" id="4_iiewd"]
+[ext_resource type="Texture2D" uid="uid://dkgw4m8qb1xld" path="res://assets/sprites/world/Magician-Magi_Witch/Magician-Magi-Witch/Individual PNG/MainCharacter_LW_F10.png" id="5_f17w4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_htugv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_apygc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_6drmj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_iiewd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_f17w4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_apygc")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fqaxr"]
+size = Vector2(159, 99.5)
+
+[node name="Babaylan (Save)" type="Node2D"]
+script = ExtResource("1_eng0t")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_htugv")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(5.5, -19.75)
+shape = SubResource("RectangleShape2D_fqaxr")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -49.0
+offset_top = -49.0
+offset_right = 63.0
+offset_bottom = -34.0
+text = "Press E to Save"
+horizontal_alignment = 1
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_body_exited"]

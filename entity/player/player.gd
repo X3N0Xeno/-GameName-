@@ -37,6 +37,46 @@ var max_velx : float = 0.0
 func _ready():
 	add_to_group("player")
 
+	# --- Check for save game load first ---
+	var loaded_position = SaveManager.get_pending_load_position()
+	
+	if loaded_position != Vector2.ZERO:
+		# (Your save game code)
+		global_position = loaded_position
+	else:
+		# --- IF NOT loading from save, check for portal return ---
+		
+		# Access variables directly
+		var return_scene_path = PortalManager.return_scene_path
+		var return_position = PortalManager.return_position
+		
+		var current_scene_filename = get_tree().current_scene.scene_file_path.get_file()
+		var return_scene_filename = return_scene_path.get_file()
+		
+		if not return_scene_path.is_empty() and current_scene_filename == return_scene_filename:
+			# We ARE returning from Punso.
+			print("Player: Returning from portal.") 
+			global_position = return_position
+			
+			# --- THIS IS THE FIX for your current error ---
+			# We no longer call a function, we just clear the variables
+			PortalManager.return_scene_path = ""
+			PortalManager.return_position = Vector2.ZERO
+			# -----------------------------------------------
+			
+			PortalManager.just_returned_from_portal = true
+		else:
+			# We are entering this scene NATURALLY
+			# Make sure this filename is exact
+			if current_scene_filename == "Cebu Highlands.tscn": 
+				print("Player: Entering Cebu Highlands naturally. Re-enabling portals.") 
+				PortalManager.re_enable_all_portals()
+			else:
+				print("Player: Entering ", current_scene_filename, " naturally. Portal status unchanged.")
+
+func _ready():
+	add_to_group("player")
+
 	# --- 1. Check for save game load first ---
 	var loaded_position = SaveManager.get_pending_load_position()
 	

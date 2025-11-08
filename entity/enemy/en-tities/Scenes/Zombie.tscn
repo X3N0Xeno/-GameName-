@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://cpmk7j6ym4g1e"]
+
+[ext_resource type="Script" uid="uid://7oqbbglr47y2" path="res://Script/zombie.gd" id="1_h15oy"]
+[ext_resource type="Texture2D" uid="uid://d4kjqhqbubp6i" path="res://Sprites/Jombie.png" id="2_yf4vm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mntmy"]
+atlas = ExtResource("2_yf4vm")
+region = Rect2(0, 200, 200, 200)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2dktg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mntmy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h15oy"]
+radius = 19.0
+height = 88.0
+
+[node name="Jombie" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+collision_layer = 4
+script = ExtResource("1_h15oy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_2dktg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(5, 1)
+shape = SubResource("CapsuleShape2D_h15oy")
+
+[node name="Area2D" type="Area2D" parent="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Area2D"]
+position = Vector2(5, 1)
+shape = SubResource("CapsuleShape2D_h15oy")

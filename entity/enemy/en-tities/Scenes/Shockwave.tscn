@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4qsfrsf5ftry"]
+
+[ext_resource type="Script" uid="uid://cvj8135fk05uo" path="res://Script/Shock.gd" id="1_4epm4"]
+[ext_resource type="Texture2D" uid="uid://bts3piy8jlxck" path="res://Sprites/rock.png" id="1_ltmge"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_182hy"]
+radius = 237.32047
+
+[node name="ShockWave" type="Node2D"]
+scale = Vector2(0.4, 0.4)
+
+[node name="Area2D" type="CharacterBody2D" parent="."]
+collision_layer = 4
+script = ExtResource("1_4epm4")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+texture = ExtResource("1_ltmge")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 6)
+shape = SubResource("CircleShape2D_182hy")
+
+[node name="Area2D" type="Area2D" parent="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D/Area2D"]
+position = Vector2(0, 6)
+shape = SubResource("CircleShape2D_182hy")

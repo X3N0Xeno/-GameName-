@@ -1,0 +1,48 @@
+[gd_scene load_steps=6 format=3 uid="uid://cfi810absh1lr"]
+
+[ext_resource type="Script" uid="uid://c3uegq1ujm8rf" path="res://Script/Bungisngis.gd" id="1_eh3x6"]
+[ext_resource type="Texture2D" uid="uid://b4c1grxfthl1s" path="res://Sprites/cyclops.png" id="2_7wyno"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1fpv"]
+atlas = ExtResource("2_7wyno")
+region = Rect2(0, 0, 413, 411)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_slowj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h1fpv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4j6ul"]
+radius = 125.89678
+
+[node name="Bungisngis" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+collision_layer = 4
+script = ExtResource("1_eh3x6")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+sprite_frames = SubResource("SpriteFrames_slowj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CircleShape2D_4j6ul")
+
+[node name="Area2D" type="Area2D" parent="CharacterBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Area2D"]
+shape = SubResource("CircleShape2D_4j6ul")
+
+[node name="RockSpawn" type="Marker2D" parent="CharacterBody2D"]
+position = Vector2(125, -17)
+
+[node name="ShockSpawn" type="Marker2D" parent="CharacterBody2D"]
+position = Vector2(117, 88)
+
+[node name="LobSpawn" type="Marker2D" parent="CharacterBody2D"]
+position = Vector2(125, -79)

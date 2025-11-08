@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://se1fngeukgb5"]
+
+[ext_resource type="Script" uid="uid://vtbnhqvk3dnl" path="res://Script/Tikbalang.gd" id="1_xhxvt"]
+[ext_resource type="Texture2D" uid="uid://4xfylfd3e6ek" path="res://Sprites/tikbalang.webp" id="2_d7mwy"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d7mwy"]
+radius = 30.0
+height = 126.0
+
+[sub_resource type="Gradient" id="Gradient_d7mwy"]
+offsets = PackedFloat32Array(0.97333336, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gdyq0"]
+gradient = SubResource("Gradient_d7mwy")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gdyq0"]
+atlas = ExtResource("2_d7mwy")
+region = Rect2(0, 0, 2500, 2917)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_moj5i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gdyq0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Tikbalang" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+collision_layer = 128
+script = ExtResource("1_xhxvt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CapsuleShape2D_d7mwy")
+
+[node name="Trail2D" type="CPUParticles2D" parent="CharacterBody2D"]
+emitting = false
+amount = 50
+texture = SubResource("GradientTexture2D_gdyq0")
+lifetime = 0.3
+direction = Vector2(-1, 0)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+scale = Vector2(0.06, 0.06)
+sprite_frames = SubResource("SpriteFrames_moj5i")
+flip_h = true
+
+[node name="Area2D" type="Area2D" parent="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Area2D"]
+shape = SubResource("CapsuleShape2D_d7mwy")

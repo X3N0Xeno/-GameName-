@@ -3,6 +3,7 @@ extends Node
 # --- Drag your nodes here in the Inspector ---
 @export var boss_scene: PackedScene           # The Black Lady's .tscn file
 @export var boss_spawn_position: Marker2D    # A Marker2D for where she appears
+@export var boss_spawn_pos : Vector2 ##VECTOR2 VERSION
 @export var battle_trigger: Area2D           # The Area2D you just made
 @export var barriers: Array[NodePath]        # We'll put all 3 barriers/doors here
 @export var camera_manager: Camera2D           # The Camera2D node
@@ -34,6 +35,9 @@ func start_battle(body):
 		# 3. Spawn the boss
 #		var boss = boss_scene.instantiate()
 #		boss.global_position = boss_spawn_position.global_position
+		var boss = boss_scene.instantiate()
+		boss.global_position = boss_spawn_pos
+		add_child(boss)
 		
 		# 4. VERY IMPORTANT: Connect the boss's "defeated" signal to our end_battle function
 #		boss.boss_defeated.connect(end_battle)
@@ -49,3 +53,7 @@ func end_battle():
 	# --- ADD THIS: Tell camera to return ---
 	if camera_manager:
 		camera_manager.resume_following_player(original_zoom)
+
+func _on_battle_trigger_body_entered(body: Node2D) -> void:
+	if !battle_started:
+		pass

@@ -3,7 +3,7 @@ extends Node2D # Or whatever your Babaylan's root node is
 # --- Node References ---
 @onready var interaction_area = $Area2D
 @onready var prompt_label = $Label
-@onready var animated_sprite = $AnimatedSprite2D
+@onready var animation_player = %AnimationPlayer
 @onready var fast_travel_menu = $FastTravelMenu # <-- Link to your new menu instance
 
 var player_in_area := false
@@ -36,7 +36,7 @@ func _on_menu_save_pressed():
 	if player_node != null:
 		SaveManager.save_game(player_node.global_position)
 		prompt_label.text = "Game Saved!"
-		animated_sprite.play("default") # Or "save_anim"
+		animation_player.play("Save")
 	else:
 		print("Error: Player node not found, cannot save.")
 

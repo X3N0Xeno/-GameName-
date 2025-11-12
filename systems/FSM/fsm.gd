@@ -19,13 +19,13 @@ func _ready() -> void:
 func change_state(old_state:State, new_state_name:String):
 	#Checks if there is a mismatch between the FSM's current state and the State expected to be active
 	if old_state != cur_state:
-		print("Invalid change_state! Mismatch Error! Expected State is: " + old_state.name + " but Current State is: " + cur_state.name);
+		#print("Invalid change_state! Mismatch Error! Expected State is: " + old_state.name + " but Current State is: " + cur_state.name);
 		return
 	
 	var new_state = states.get(new_state_name.to_lower())
 	
 	if !new_state:
-		print("New state is empty or non-existent");
+		#print("New state is empty or non-existent");
 		return
 	
 	if cur_state:
@@ -42,10 +42,10 @@ func force_change_state(new_state : String):
 	var newState = states.get(new_state.to_lower())
 	
 	if !new_state:
-		print("New state is empty or non-existent");
+		#print("New state is empty or non-existent");
 		return
 	if cur_state == newState:
-		print("State is same, aborting")
+		#print("State is same, aborting")
 		return
 	if cur_state:
 		var exit_callable = Callable(cur_state, "exitState") #the current state's exit method

@@ -125,21 +125,22 @@ func take_damage(damage: int):
 
 #WARNING ADD CUSTOM DEATH CODE. QUEUE FREE? TELEPORT TO LAST BABAYLAN?
 func die():
-	print("Player has died!")
+	print("Player has died!...but you refused or something. IMMORTAILITY WOO")
 
 func heal():
 	if hits >= hits_to_heal: #If hits threshold is met
 		HP += heal_amount #heal Y amount
 		hits = 0 #Reset hits
-		print("PLAYER HEAL() DEBUG: Healed for " , heal_amount, " HP now ", HP ," hits reset back to " , hits)
+		#print("PLAYER HEAL() DEBUG: Healed for " , heal_amount, " HP now ", HP ," hits reset back to " , hits)
+		print("Player healed for " , heal_amount, " HP now ", HP)
 	else:
-		print("PLAYER HEAL() DEBUG: Tried healing. hits not yet in threshold. Still at ", hits , " hits out of " , hits_to_heal)
+		#print("PLAYER HEAL() DEBUG: Tried healing. hits not yet in threshold. Still at ", hits , " hits out of " , hits_to_heal)
+		pass
 
 #This is for healing
 func _on_hitbox_area_entered(area: Area2D) -> void:
-	if area.get_parent().is_in_group("Enemy"):
-		hits += 1
-		heal()
+	hits += 1
+	heal()
 
 ##PLAYER POSITION WHEN SAVING AND / OR USING PORTALS
 func save_pos():

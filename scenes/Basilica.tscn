@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=4 uid="uid://csomt5yrm74jl"]
+[gd_scene load_steps=57 format=4 uid="uid://csomt5yrm74jl"]
 
 [ext_resource type="Texture2D" uid="uid://cafks2i0vtti1" path="res://assets/sprites/world/Basilica/Basilica Full.png" id="1_evuar"]
 [ext_resource type="Script" uid="uid://5wuiyx6sxfou" path="res://scenes/basilica.gd" id="1_ro2rk"]
@@ -16,8 +16,9 @@
 [ext_resource type="Texture2D" uid="uid://5k3bf1nnm8hw" path="res://assets/sprites/world/Basilica/bookshelf.png" id="14_re2ji"]
 [ext_resource type="Script" uid="uid://c3esfdhftruqv" path="res://scripts/moving_barrier.gd" id="14_u11dr"]
 [ext_resource type="Script" uid="uid://sw50efav76hx" path="res://scenes/boss_manager.gd" id="15_wft7y"]
+[ext_resource type="PackedScene" uid="uid://b4qwhk5cfycfo" path="res://Scene/blacklady.tscn" id="16_rlxj7"]
 [ext_resource type="Script" uid="uid://c48gyy7uu7bnf" path="res://scenes/cameraManager.gd" id="16_skcl5"]
-[ext_resource type="PackedScene" uid="uid://b0t2q5erqiw0n" path="res://scenes/babaylan_(save).tscn" id="17_niuwy"]
+[ext_resource type="PackedScene" uid="uid://b0t2q5erqiw0n" path="res://scenes/Babaylan/babaylan_(save).tscn" id="17_niuwy"]
 [ext_resource type="Texture2D" uid="uid://ces7eut1jaouf" path="res://assets/sprites/world/Basilica/download.png" id="17_skcl5"]
 [ext_resource type="Texture2D" uid="uid://cc0eul2h0rui1" path="res://assets/sprites/world/Cebu Highlands/prototypegames_tiny_caverns/content/tilesets/bricks_full.png" id="19_re2ji"]
 [ext_resource type="PackedScene" uid="uid://dmcwkurxb78or" path="res://systems/Combat/hurtbox.tscn" id="19_w6nbt"]
@@ -26,7 +27,7 @@
 [ext_resource type="Script" uid="uid://c6dqa4ksx0l47" path="res://scripts/LevelTransition.gd" id="23_v6qfd"]
 [ext_resource type="PackedScene" uid="uid://drc67vy51pti5" path="res://Script/Ghost.tscn" id="26_rlxj7"]
 [ext_resource type="PackedScene" uid="uid://8q0sh4mjbxk5" path="res://Script/Santelmo.tscn" id="27_q248m"]
-[ext_resource type="PackedScene" uid="uid://b4qwhk5cfycfo" path="res://Scene/blacklady.tscn" id="27_rlxj7"]
+[ext_resource type="Script" uid="uid://djpqbmmx3aww2" path="res://scenes/basilica_breakwall_hint.gd" id="28_q248m"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_niuwy"]
 texture = ExtResource("3_skcl5")
@@ -2314,6 +2315,9 @@ size = Vector2(1278, 689.75)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w6nbt"]
 size = Vector2(25, 40)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iyee6"]
+size = Vector2(48, 28)
+
 [node name="Basilica" type="Node2D" node_paths=PackedStringArray("canvas_modulate", "dark_zone_trigger", "wall_tilemap", "player", "babaylan_npc")]
 script = ExtResource("1_ro2rk")
 canvas_modulate = NodePath("CanvasModulate")
@@ -2343,7 +2347,7 @@ texture = ExtResource("1_evuar")
 
 [node name="Player" parent="." instance=ExtResource("2_47x14")]
 z_index = 5
-position = Vector2(-215, 65)
+position = Vector2(-215, 64)
 
 [node name="PointLight2D2" type="PointLight2D" parent="Player"]
 modulate = Color(0, 0, 0, 1)
@@ -2786,6 +2790,8 @@ shape = SubResource("RectangleShape2D_ro2rk")
 
 [node name="BossManager" type="Node" parent="." node_paths=PackedStringArray("battle_trigger", "camera_manager", "arena_camera_position")]
 script = ExtResource("15_wft7y")
+boss_scene = ExtResource("16_rlxj7")
+boss_spawn_pos = Vector2(1051, -280)
 battle_trigger = NodePath("../BattleTrigger")
 barriers = Array[NodePath]([NodePath("../EntranceDoor"), NodePath("../Barrier"), NodePath("../Barrier2")])
 camera_manager = NodePath("../Camera2D")
@@ -3071,9 +3077,25 @@ position = Vector2(316, -418)
 [node name="Santelmo6" parent="." instance=ExtResource("27_q248m")]
 position = Vector2(725, -321)
 
-[node name="BLACK Lady" parent="." instance=ExtResource("27_rlxj7")]
-position = Vector2(1055, -263)
-scale = Vector2(0.1, 0.1)
+[node name="Label" type="Label" parent="."]
+offset_left = 1433.0
+offset_top = -297.0
+offset_right = 1645.0
+offset_bottom = -282.0
+scale = Vector2(0.4, 0.4)
+text = "Look out for breakable walls"
+script = ExtResource("28_q248m")
+
+[node name="Area2D" type="Area2D" parent="Label"]
+position = Vector2(-12.499905, -1.335144e-05)
+scale = Vector2(2.4999998, 2.4999998)
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Label/Area2D"]
+position = Vector2(-14, 4)
+scale = Vector2(0.9999999, 0.9999999)
+shape = SubResource("RectangleShape2D_iyee6")
 
 [connection signal="body_entered" from="Clues/Clue/Area2D" to="Clues/Clue" method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Clues/Clue/Area2D" to="Clues/Clue" method="_on_Area2D_body_exited"]
@@ -3085,9 +3107,10 @@ scale = Vector2(0.1, 0.1)
 [connection signal="body_exited" from="Clues/Clue4/Area2D" to="Clues/Clue4" method="_on_Area2D_body_exited"]
 [connection signal="body_entered" from="Clues/Clue5/Area2D" to="Clues/Clue5" method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Clues/Clue5/Area2D" to="Clues/Clue5" method="_on_Area2D_body_exited"]
-[connection signal="area_shape_entered" from="BattleTrigger" to="BossManager" method="_on_battle_trigger_area_shape_entered"]
+[connection signal="body_entered" from="BattleTrigger" to="BossManager" method="_on_battle_trigger_body_entered"]
 [connection signal="body_entered" from="DarkZoneTrigger" to="." method="_on_dark_zone_trigger_body_entered"]
 [connection signal="body_exited" from="DarkZoneTrigger" to="." method="_on_dark_zone_trigger_body_exited"]
+[connection signal="body_entered" from="Label/Area2D" to="Label" method="_on_area_2d_body_entered"]
 
 [editable path="BreakableWall/Hurtbox"]
 [editable path="BreakableWall2/Hurtbox2"]

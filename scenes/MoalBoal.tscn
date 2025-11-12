@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bjtv8xdn34o2d" path="res://assets/sprites/world/Cebu Highlands/prototypegames_tiny_caverns/content/tilesets/rocks_full.png" id="5_6f2np"]
 [ext_resource type="Texture2D" uid="uid://dbyey5kwxsidu" path="res://assets/sprites/world/Cebu Highlands/prototypegames_tiny_caverns/content/tilesets/orange_full.png" id="5_jbybt"]
 [ext_resource type="Texture2D" uid="uid://wk33d7sogovs" path="res://assets/sprites/world/Mactan Forest/Water+.png" id="6_p1gfp"]
-[ext_resource type="PackedScene" uid="uid://qkbu7l7pj6oi" path="res://Scene/bakuyawa.tscn" id="8_bbxtu"]
+[ext_resource type="PackedScene" uid="uid://qkbu7l7pj6oi" path="res://Script/bakuyawa.tscn" id="8_bbxtu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p1gfp"]
 texture = ExtResource("5_jbybt")

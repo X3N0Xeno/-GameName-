@@ -62,6 +62,7 @@ height = 380.0
 radius = 168.0119
 
 [node name="BLACK Lady" type="Node2D"]
+scale = Vector2(0.1, 0.1)
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 collision_layer = 4

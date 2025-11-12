@@ -634,7 +634,7 @@ func twin_devour() -> void:
 
 	# Optional: smooth return to idle hover
 	if has_method("_start_idle_hover"):
-		await _start_idle_hover()
+		_start_idle_hover()
 
 
 

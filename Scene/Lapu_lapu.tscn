@@ -1,0 +1,74 @@
+[gd_scene load_steps=8 format=3 uid="uid://k8ld35w5oraa"]
+
+[ext_resource type="Script" uid="uid://bk1xje7w3emmv" path="res://Script/Lapu2.gd" id="1_fv7j4"]
+[ext_resource type="Texture2D" uid="uid://4xfylfd3e6ek" path="res://Sprites/tikbalang.webp" id="2_fv7j4"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j0svn"]
+radius = 94.0
+height = 308.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vibq3"]
+atlas = ExtResource("2_fv7j4")
+region = Rect2(0, 0, 2500, 2917)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5m8t0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vibq3")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6ykw2"]
+radius = 132.0
+height = 349.33334
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3r6qc"]
+radius = 264.06818
+
+[node name="Lapu Lapu" type="Node"]
+
+[node name="CharacterBody2d" type="CharacterBody2D" parent="."]
+position = Vector2(-42, 0)
+scale = Vector2(0.25, 0.25)
+collision_layer = 4
+collision_mask = 5
+script = ExtResource("1_fv7j4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2d"]
+position = Vector2(170, -13.333333)
+shape = SubResource("CapsuleShape2D_j0svn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2d"]
+position = Vector2(172, -20)
+scale = Vector2(0.175, 0.175)
+sprite_frames = SubResource("SpriteFrames_5m8t0")
+animation = &"new_animation"
+flip_h = true
+
+[node name="Slash" type="Area2D" parent="CharacterBody2d"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="Up" type="CollisionShape2D" parent="CharacterBody2d/Slash"]
+position = Vector2(164, -176)
+shape = SubResource("CapsuleShape2D_6ykw2")
+
+[node name="Left" type="CollisionShape2D" parent="CharacterBody2d/Slash"]
+position = Vector2(-40, 20)
+shape = SubResource("CircleShape2D_3r6qc")
+
+[node name="Down" type="CollisionShape2D" parent="CharacterBody2d/Slash"]
+position = Vector2(172, 172)
+shape = SubResource("CapsuleShape2D_6ykw2")
+
+[node name="Right" type="CollisionShape2D" parent="CharacterBody2d/Slash"]
+position = Vector2(324, 28)
+shape = SubResource("CircleShape2D_3r6qc")
+
+[node name="Contact" type="CollisionShape2D" parent="CharacterBody2d/Slash"]
+position = Vector2(170, -13.333333)
+shape = SubResource("CapsuleShape2D_j0svn")

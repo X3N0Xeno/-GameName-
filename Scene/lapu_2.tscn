@@ -1,0 +1,124 @@
+[gd_scene load_steps=15 format=3 uid="uid://bcdae1fd7ylm5"]
+
+[ext_resource type="Script" uid="uid://dgu8xwjen8cqg" path="res://Script/Lapu2v2.gd" id="1_13m2l"]
+[ext_resource type="Texture2D" uid="uid://dk1vcpmqirv3j" path="res://Sprites/lapulapu_spritesheet.png" id="2_e0rbx"]
+[ext_resource type="PackedScene" uid="uid://b4mpprclvqx73" path="res://systems/Combat/hitbox.tscn" id="3_13m2l"]
+[ext_resource type="PackedScene" uid="uid://dmcwkurxb78or" path="res://systems/Combat/hurtbox.tscn" id="4_0ohrf"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_13m2l"]
+radius = 94.0
+height = 266.66666
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6tpr0"]
+atlas = ExtResource("2_e0rbx")
+region = Rect2(480, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_heisr"]
+atlas = ExtResource("2_e0rbx")
+region = Rect2(560, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j0svn"]
+atlas = ExtResource("2_e0rbx")
+region = Rect2(0, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w3mbm"]
+atlas = ExtResource("2_e0rbx")
+region = Rect2(80, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5m8t0"]
+atlas = ExtResource("2_e0rbx")
+region = Rect2(160, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e5lar"]
+atlas = ExtResource("2_e0rbx")
+region = Rect2(240, 0, 80, 80)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0ohrf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6tpr0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_heisr")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j0svn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w3mbm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5m8t0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e5lar")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6tpr0"]
+radius = 132.0
+height = 349.33334
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_heisr"]
+radius = 264.06818
+
+[node name="Lapu2" type="Node2D"]
+scale = Vector2(0.3, 0.3)
+
+[node name="CharacterBody2d" type="CharacterBody2D" parent="."]
+position = Vector2(-42, 0)
+collision_layer = 4
+collision_mask = 5
+script = ExtResource("1_13m2l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2d"]
+position = Vector2(170, -13.333333)
+shape = SubResource("CapsuleShape2D_13m2l")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2d"]
+position = Vector2(164, -44)
+scale = Vector2(10.2, 10.15)
+sprite_frames = SubResource("SpriteFrames_0ohrf")
+animation = &"attack"
+
+[node name="Hitbox" parent="CharacterBody2d" instance=ExtResource("3_13m2l")]
+collision_layer = 0
+collision_mask = 32
+
+[node name="Up" type="CollisionShape2D" parent="CharacterBody2d/Hitbox"]
+position = Vector2(164, -176)
+shape = SubResource("CapsuleShape2D_6tpr0")
+
+[node name="Left" type="CollisionShape2D" parent="CharacterBody2d/Hitbox"]
+position = Vector2(-40, 20)
+shape = SubResource("CircleShape2D_heisr")
+
+[node name="Down" type="CollisionShape2D" parent="CharacterBody2d/Hitbox"]
+position = Vector2(172, 172)
+shape = SubResource("CapsuleShape2D_6tpr0")
+
+[node name="Right" type="CollisionShape2D" parent="CharacterBody2d/Hitbox"]
+position = Vector2(324, 28.000002)
+shape = SubResource("CircleShape2D_heisr")
+
+[node name="Contact" type="CollisionShape2D" parent="CharacterBody2d/Hitbox"]
+position = Vector2(170, -13.333333)
+shape = SubResource("CapsuleShape2D_13m2l")
+
+[node name="Hurtbox" parent="CharacterBody2d" instance=ExtResource("4_0ohrf")]
+position = Vector2(42, 0)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CharacterBody2d/Hurtbox"]
+position = Vector2(126.66669, -13.333332)
+shape = SubResource("CapsuleShape2D_13m2l")

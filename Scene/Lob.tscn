@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://v0thw6nwp8ig"]
+
+[ext_resource type="Script" uid="uid://dmjwrr0rp4byu" path="res://Script/Bungisngis_Lob.gd" id="1_cvqbb"]
+[ext_resource type="Texture2D" uid="uid://bts3piy8jlxck" path="res://Sprites/rock.png" id="2_nc6q5"]
+[ext_resource type="PackedScene" uid="uid://b4mpprclvqx73" path="res://systems/Combat/hitbox.tscn" id="3_nc6q5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5mkji"]
+radius = 26.925823
+
+[node name="Lob" type="Node2D"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+scale = Vector2(1.2, 1.2)
+collision_layer = 4
+script = ExtResource("1_cvqbb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(0, 6)
+shape = SubResource("CircleShape2D_5mkji")
+
+[node name="Hitbox" parent="CharacterBody2D" instance=ExtResource("3_nc6q5")]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CharacterBody2D/Hitbox"]
+position = Vector2(0, 6)
+shape = SubResource("CircleShape2D_5mkji")
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(-9.536743e-07, 5.000001)
+scale = Vector2(0.78125, 1.0937499)
+texture = ExtResource("2_nc6q5")

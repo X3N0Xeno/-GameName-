@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://dtbbosq4r4kvh"]
+
+[ext_resource type="Script" uid="uid://brkfv7nwqv2ff" path="res://Script/bakunawa_beams.gd" id="1_0dn4t"]
+[ext_resource type="Texture2D" uid="uid://cu8xjwrpecnmo" path="res://Sprites/Untitled design.png" id="2_pdrmc"]
+[ext_resource type="PackedScene" uid="uid://b4mpprclvqx73" path="res://systems/Combat/hitbox.tscn" id="3_pdrmc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pdrmc"]
+size = Vector2(2762.501, 330.00006)
+
+[node name="Beams" type="Area2D"]
+scale = Vector2(0.02, 0.02)
+collision_layer = 0
+script = ExtResource("1_0dn4t")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1400, -50.00006)
+scale = Vector2(42.968754, 27.343748)
+texture = ExtResource("2_pdrmc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1372.75, 17)
+scale = Vector2(0.9999995, 0.9999995)
+shape = SubResource("RectangleShape2D_pdrmc")
+
+[node name="Hitbox" parent="." instance=ExtResource("3_pdrmc")]
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(1372.75, 17)
+scale = Vector2(0.9999995, 0.9999995)
+shape = SubResource("RectangleShape2D_pdrmc")

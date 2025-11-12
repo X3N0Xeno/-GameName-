@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://1jng0q88vgsr"]
+
+[ext_resource type="Script" uid="uid://brxea5tgwq1g" path="res://Script/BL_Beam.gd" id="1_3acg5"]
+[ext_resource type="Texture2D" uid="uid://cu8xjwrpecnmo" path="res://Sprites/Untitled design.png" id="2_ygn5x"]
+[ext_resource type="PackedScene" uid="uid://b4mpprclvqx73" path="res://systems/Combat/hitbox.tscn" id="3_ygn5x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3acg5"]
+size = Vector2(2005.0006, 330.00006)
+
+[node name="SBeam" type="Area2D"]
+scale = Vector2(0.2, 0.2)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_3acg5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1399.9999, -9.999985)
+scale = Vector2(42.96875, 9.375)
+texture = ExtResource("2_ygn5x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1655, 4.999999)
+scale = Vector2(0.9999995, 0.9999995)
+shape = SubResource("RectangleShape2D_3acg5")
+
+[node name="Hitbox" parent="." instance=ExtResource("3_ygn5x")]
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(1655, 4.999999)
+scale = Vector2(0.9999995, 0.9999995)
+shape = SubResource("RectangleShape2D_3acg5")

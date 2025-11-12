@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://docmulcvpryag"]
+
+[ext_resource type="Texture2D" uid="uid://eufpxts3ahen" path="res://assets/sprites/world/Mactan Forest/backgrounds_spritesheet.png" id="1_b1y0h"]
+
+[resource]
+atlas = ExtResource("1_b1y0h")
+region = Rect2(0, 0, 320, 180)

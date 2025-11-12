@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://vp72ke1r4swr"
+path="res://.godot/imported/mystical_mystery.mp3-e0cd92a44744d8af079ec781756bba1a.mp3str"
+
+[deps]
+
+source_file="res://cutscenes/intro/Music and SFX/mystical_mystery.mp3"
+dest_files=["res://.godot/imported/mystical_mystery.mp3-e0cd92a44744d8af079ec781756bba1a.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

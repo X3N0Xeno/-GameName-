@@ -1,0 +1,49 @@
+[gd_scene load_steps=2 format=3 uid="uid://ci3xhfflrbmxg"]
+
+[ext_resource type="Script" uid="uid://ckribfa6w04na" path="res://scenes/fast_travel_menu.gd" id="1_nihd0"]
+
+[node name="FastTravelMenu" type="CanvasLayer"]
+script = ExtResource("1_nihd0")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 117.00001
+offset_top = 26.0
+offset_right = 243.0
+offset_bottom = 206.0
+scale = Vector2(0.64181507, 0.64181507)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SaveButton" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Save Game"
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Go To"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HighlandsButton" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Cebu Highlands"
+
+[node name="BasilicaButton" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Basilica
+"
+
+[node name="HouseButton" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Ancestral House"
+
+[node name="MoalboalButton" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Moalboal"
+
+[node name="CloseButton" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Close"

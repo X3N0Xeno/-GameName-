@@ -1,0 +1,81 @@
+[gd_scene load_steps=11 format=3 uid="uid://8q0sh4mjbxk5"]
+
+[ext_resource type="Script" uid="uid://h6coy0cvl62i" path="res://Script/Santelmo.gd" id="1_6eax5"]
+[ext_resource type="Texture2D" uid="uid://bfi0fdwddxtgx" path="res://Sprites/santelmo_spritesheet.png" id="3_evaib"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w8xaq"]
+radius = 43.0
+height = 112.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w8xaq"]
+atlas = ExtResource("3_evaib")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l5nlp"]
+atlas = ExtResource("3_evaib")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xt46c"]
+atlas = ExtResource("3_evaib")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y4dmh"]
+atlas = ExtResource("3_evaib")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l5nlp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w8xaq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l5nlp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xt46c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y4dmh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xt46c"]
+radius = 200.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6eax5"]
+radius = 350.0
+
+[node name="Santelmo" type="Node2D"]
+scale = Vector2(0.5, 0.5)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+collision_layer = 4
+collision_mask = 5
+script = ExtResource("1_6eax5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(1, -62)
+shape = SubResource("CapsuleShape2D_w8xaq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+position = Vector2(2, -58.000008)
+scale = Vector2(4.3906245, 4.6875)
+sprite_frames = SubResource("SpriteFrames_l5nlp")
+
+[node name="Explosion" type="Area2D" parent="CharacterBody2D"]
+visible = false
+collision_layer = 4
+collision_mask = 2
+
+[node name="Attack" type="CollisionShape2D" parent="CharacterBody2D/Explosion"]
+visible = false
+position = Vector2(2, -60)
+shape = SubResource("CircleShape2D_xt46c")
+
+[node name="Death" type="CollisionShape2D" parent="CharacterBody2D/Explosion"]
+position = Vector2(-1, -61)
+shape = SubResource("CircleShape2D_6eax5")

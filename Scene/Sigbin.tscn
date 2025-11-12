@@ -1,0 +1,73 @@
+[gd_scene load_steps=10 format=3 uid="uid://jmg6dfgc1s31"]
+
+[ext_resource type="Script" uid="uid://batlh00rvb05c" path="res://Script/Sigbin.gd" id="1_tlfs2"]
+[ext_resource type="Texture2D" uid="uid://b3s1u4v6f74m0" path="res://Sprites/enemy_ground_spritesheet.png" id="2_d0djj"]
+[ext_resource type="PackedScene" uid="uid://dmcwkurxb78or" path="res://systems/Combat/hurtbox.tscn" id="3_d0djj"]
+[ext_resource type="PackedScene" uid="uid://b4mpprclvqx73" path="res://systems/Combat/hitbox.tscn" id="4_grsc0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_grsc0"]
+atlas = ExtResource("2_d0djj")
+region = Rect2(384, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4d5it"]
+atlas = ExtResource("2_d0djj")
+region = Rect2(416, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vimwg"]
+atlas = ExtResource("2_d0djj")
+region = Rect2(448, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_grsc0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_grsc0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4d5it")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vimwg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7ok11"]
+radius = 54.147945
+
+[node name="Sigbin" type="Node2D"]
+scale = Vector2(0.5, 0.5)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+collision_layer = 4
+script = ExtResource("1_tlfs2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+position = Vector2(3.8146973e-06, -14.999996)
+scale = Vector2(7, 7)
+sprite_frames = SubResource("SpriteFrames_grsc0")
+
+[node name="Hurtbox" parent="CharacterBody2D" instance=ExtResource("3_d0djj")]
+scale = Vector2(0.99999994, 0.99999994)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CharacterBody2D/Hurtbox"]
+position = Vector2(-2, -18)
+shape = SubResource("CircleShape2D_7ok11")
+
+[node name="Hitbox" parent="CharacterBody2D" instance=ExtResource("4_grsc0")]
+position = Vector2(-5, 0)
+scale = Vector2(0.99999994, 0.99999994)
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CharacterBody2D/Hitbox"]
+position = Vector2(3.0000005, -18)
+shape = SubResource("CircleShape2D_7ok11")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(-2, -18)
+shape = SubResource("CircleShape2D_7ok11")

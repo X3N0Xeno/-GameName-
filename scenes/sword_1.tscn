@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxw8jf1do5sus"]
+
+[ext_resource type="Script" uid="uid://c5rrysjf52uq3" path="res://systems/Combat/sword_1.gd" id="1_ee680"]
+[ext_resource type="PackedScene" uid="uid://b4mpprclvqx73" path="res://scenes/hitbox.tscn" id="2_yvkpt"]
+
+[node name="Sword1" type="Node2D"]
+script = ExtResource("1_ee680")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Hitbox" parent="." instance=ExtResource("2_yvkpt")]

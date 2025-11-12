@@ -1,0 +1,97 @@
+[gd_scene load_steps=9 format=3 uid="uid://bmnmap41ekomh"]
+
+[ext_resource type="Texture2D" uid="uid://c5jqufqp8wgd7" path="res://backgrounds_spritesheet.png" id="2_0d15v"]
+[ext_resource type="Texture2D" uid="uid://bs1ffk3nsesfk" path="res://bg_cath_pillar_mid.png" id="2_ub1nu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pc8wo"]
+atlas = ExtResource("2_0d15v")
+region = Rect2(320, 0, 320, 148)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ub1nu"]
+atlas = ExtResource("2_0d15v")
+region = Rect2(320, 148, 320, 148)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0d15v"]
+atlas = ExtResource("2_0d15v")
+region = Rect2(320, 296, 320, 148)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32d4o"]
+atlas = ExtResource("2_0d15v")
+region = Rect2(320, 444, 320, 148)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hsoqe"]
+atlas = ExtResource("2_0d15v")
+region = Rect2(320, 592, 320, 148)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pv7mn"]
+atlas = ExtResource("2_0d15v")
+region = Rect2(320, 740, 320, 148)
+
+[node name="parallax_cathedral" type="Node2D"]
+
+[node name="Background" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.1, 0)
+repeat_size = Vector2(320, 0)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Background"]
+texture = SubResource("AtlasTexture_pc8wo")
+
+[node name="BackBG" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.2, 0)
+repeat_size = Vector2(320, 0)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="BackBG"]
+texture = SubResource("AtlasTexture_ub1nu")
+
+[node name="BackLayer" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.3, 0)
+repeat_size = Vector2(320, 0)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="BackLayer"]
+texture = SubResource("AtlasTexture_0d15v")
+
+[node name="MidBG" type="Parallax2D" parent="."]
+modulate = Color(1, 1, 1, 0.39215687)
+scroll_scale = Vector2(0.4, 0)
+scroll_offset = Vector2(10, 0)
+repeat_size = Vector2(320, 0)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="MidBG"]
+texture = SubResource("AtlasTexture_32d4o")
+
+[node name="MidLayer" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.5, 0)
+repeat_size = Vector2(320, 0)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="MidLayer"]
+texture = ExtResource("2_ub1nu")
+
+[node name="FrontBG" type="Parallax2D" parent="."]
+scroll_scale = Vector2(0.6, 0)
+repeat_size = Vector2(320, 0)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="FrontBG"]
+texture = SubResource("AtlasTexture_hsoqe")
+
+[node name="FrontLayer" type="Parallax2D" parent="."]
+modulate = Color(1, 1, 1, 0.39215687)
+scroll_scale = Vector2(0.7, 0)
+scroll_offset = Vector2(-50, 0)
+repeat_size = Vector2(320, 0)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="FrontLayer"]
+texture = SubResource("AtlasTexture_pv7mn")
+
+[node name="Foreground" type="Parallax2D" parent="."]
+scroll_scale = Vector2(1, 0)
+repeat_size = Vector2(320, 0)
+repeat_times = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Foreground"]

@@ -1,0 +1,75 @@
+[gd_scene load_steps=9 format=3 uid="uid://crn8ax6uumjgo"]
+
+[ext_resource type="Script" uid="uid://dyd8xo8tpxb3o" path="res://Script/Kapre.gd" id="1_0qufb"]
+[ext_resource type="Texture2D" uid="uid://xkl0ftfh2dog" path="res://Sprites/Black.png" id="2_lhw0t"]
+[ext_resource type="PackedScene" uid="uid://b4mpprclvqx73" path="res://systems/Combat/hitbox.tscn" id="3_0jxtx"]
+[ext_resource type="PackedScene" uid="uid://dmcwkurxb78or" path="res://systems/Combat/hurtbox.tscn" id="4_d6taw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pa8m5"]
+atlas = ExtResource("2_lhw0t")
+region = Rect2(0, 0, 197, 403)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0jxtx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pa8m5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d6taw"]
+radius = 65.0
+height = 380.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h0ogd"]
+radius = 228.00877
+
+[node name="Kapre" type="Node2D"]
+scale = Vector2(0.1, 0.1)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+collision_layer = 4
+script = ExtResource("1_0qufb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+sprite_frames = SubResource("SpriteFrames_0jxtx")
+
+[node name="Contact Collision" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(13, 3)
+shape = SubResource("CapsuleShape2D_d6taw")
+
+[node name="Hitbox" parent="CharacterBody2D" instance=ExtResource("3_0jxtx")]
+collision_layer = 0
+collision_mask = 32
+
+[node name="MeleeRight" type="CollisionShape2D" parent="CharacterBody2D/Hitbox"]
+position = Vector2(232, -5)
+shape = SubResource("CircleShape2D_h0ogd")
+
+[node name="MeleeLeft" type="CollisionShape2D" parent="CharacterBody2D/Hitbox"]
+position = Vector2(-211, 4)
+shape = SubResource("CircleShape2D_h0ogd")
+
+[node name="Contact" type="CollisionShape2D" parent="CharacterBody2D/Hitbox"]
+position = Vector2(13, 3)
+shape = SubResource("CapsuleShape2D_d6taw")
+
+[node name="Contact Collision" type="CollisionShape2D" parent="CharacterBody2D/Hitbox"]
+position = Vector2(13, 3)
+shape = SubResource("CapsuleShape2D_d6taw")
+
+[node name="Node" type="Node" parent="CharacterBody2D"]
+
+[node name="ProjectileSpawn" type="Marker2D" parent="CharacterBody2D/Node"]
+
+[node name="Hurtbox" parent="CharacterBody2D" instance=ExtResource("4_d6taw")]
+scale = Vector2(0.99999994, 0.99999994)
+collision_layer = 8
+collision_mask = 0
+
+[node name="Contact Collision" type="CollisionShape2D" parent="CharacterBody2D/Hurtbox"]
+position = Vector2(13, 3)
+shape = SubResource("CapsuleShape2D_d6taw")

@@ -1,0 +1,72 @@
+[gd_scene load_steps=11 format=3 uid="uid://bx0ibja58pm76"]
+
+[ext_resource type="Script" uid="uid://c1vccs1kgroio" path="res://Script/Langaw.gd" id="1_xsnf0"]
+[ext_resource type="Texture2D" uid="uid://b1jfgiphetftu" path="res://Sprites/enemy_flying_spritesheet.png" id="2_tcak2"]
+[ext_resource type="PackedScene" uid="uid://dmcwkurxb78or" path="res://systems/Combat/hurtbox.tscn" id="3_tcak2"]
+[ext_resource type="PackedScene" uid="uid://b4mpprclvqx73" path="res://systems/Combat/hitbox.tscn" id="4_cxdox"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tcak2"]
+radius = 17.0
+height = 46.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cxdox"]
+atlas = ExtResource("2_tcak2")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o5n5c"]
+atlas = ExtResource("2_tcak2")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cxdox"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cxdox")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o5n5c")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cxdox"]
+radius = 200.00002
+height = 500.00003
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o5n5c"]
+radius = 17.0
+height = 46.0
+
+[node name="Node2D" type="Node2D"]
+scale = Vector2(0.5, 0.5)
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+collision_layer = 4
+collision_mask = 5
+script = ExtResource("1_xsnf0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CapsuleShape2D_tcak2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_cxdox")
+
+[node name="Hurtbox" parent="CharacterBody2D" instance=ExtResource("3_tcak2")]
+scale = Vector2(0.1, 0.1)
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CharacterBody2D/Hurtbox"]
+scale = Vector2(0.9999998, 0.9999998)
+shape = SubResource("CapsuleShape2D_cxdox")
+
+[node name="Hitbox" parent="CharacterBody2D" instance=ExtResource("4_cxdox")]
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="CharacterBody2D/Hitbox"]
+scale = Vector2(0.9999998, 0.9999998)
+shape = SubResource("CapsuleShape2D_o5n5c")

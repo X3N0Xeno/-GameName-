@@ -1,0 +1,178 @@
+[gd_scene load_steps=15 format=3 uid="uid://qkbu7l7pj6oi"]
+
+[ext_resource type="Script" uid="uid://cf3iq100cmd5d" path="res://Script/bakuyawa.gd" id="1_js833"]
+[ext_resource type="Texture2D" uid="uid://civrb27m4owck" path="res://Sprites/2.png" id="2_ohb1p"]
+[ext_resource type="Texture2D" uid="uid://dltjxlr1beghw" path="res://Sprites/1.png" id="2_tofpx"]
+[ext_resource type="Script" uid="uid://bq551okd2agg3" path="res://Script/Bakunawa_head.gd" id="4_ohb1p"]
+[ext_resource type="PackedScene" uid="uid://dmcwkurxb78or" path="res://systems/Combat/hurtbox.tscn" id="5_b2cnq"]
+[ext_resource type="PackedScene" uid="uid://b4mpprclvqx73" path="res://systems/Combat/hitbox.tscn" id="6_ws2wn"]
+[ext_resource type="Texture2D" uid="uid://b8qhq2vqv13f" path="res://Sprites/bakunawa_spritesheet.png" id="7_tofpx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ws2wn"]
+atlas = ExtResource("2_tofpx")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2ev51"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ws2wn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0hfg8"]
+atlas = ExtResource("2_ohb1p")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ws2wn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0hfg8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ohb1p"]
+size = Vector2(244.5, 123)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b2cnq"]
+atlas = ExtResource("7_tofpx")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b2cnq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b2cnq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Bakuyawa" type="Node2D"]
+script = ExtResource("1_js833")
+
+[node name="Body1" type="AnimatedSprite2D" parent="."]
+position = Vector2(-145.99998, -8.000001)
+scale = Vector2(3.5, 3.5)
+sprite_frames = SubResource("SpriteFrames_2ev51")
+
+[node name="Body2" type="AnimatedSprite2D" parent="."]
+position = Vector2(-307, -10)
+scale = Vector2(3.5, 3.5)
+sprite_frames = SubResource("SpriteFrames_2ev51")
+
+[node name="Body3" type="AnimatedSprite2D" parent="."]
+position = Vector2(-467.99994, -12.000001)
+scale = Vector2(3.5, 3.5)
+sprite_frames = SubResource("SpriteFrames_2ev51")
+
+[node name="Body4" type="AnimatedSprite2D" parent="."]
+position = Vector2(-629, -14)
+scale = Vector2(3.5, 3.5)
+sprite_frames = SubResource("SpriteFrames_2ev51")
+
+[node name="Body5" type="AnimatedSprite2D" parent="."]
+position = Vector2(-786.9999, -11.000001)
+scale = Vector2(3.5, 3.5)
+sprite_frames = SubResource("SpriteFrames_2ev51")
+
+[node name="Body6" type="AnimatedSprite2D" parent="."]
+position = Vector2(-948, -13)
+scale = Vector2(3.5, 3.5)
+sprite_frames = SubResource("SpriteFrames_2ev51")
+
+[node name="Body7" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1108.9999, -12.000001)
+scale = Vector2(3.5, 3.5)
+sprite_frames = SubResource("SpriteFrames_2ev51")
+
+[node name="Body8" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1270, -14)
+scale = Vector2(3.5, 3.5)
+sprite_frames = SubResource("SpriteFrames_2ev51")
+
+[node name="Body9" type="AnimatedSprite2D" parent="."]
+position = Vector2(-145.99998, -8.000001)
+scale = Vector2(3.5, 3.5)
+sprite_frames = SubResource("SpriteFrames_2ev51")
+
+[node name="Body10" type="AnimatedSprite2D" parent="."]
+position = Vector2(-307, -10)
+scale = Vector2(3.5, 3.5)
+sprite_frames = SubResource("SpriteFrames_2ev51")
+
+[node name="Body11" type="AnimatedSprite2D" parent="."]
+position = Vector2(-467.99994, -12.000001)
+scale = Vector2(3.5, 3.5)
+sprite_frames = SubResource("SpriteFrames_2ev51")
+
+[node name="Body12" type="AnimatedSprite2D" parent="."]
+position = Vector2(-629, -14)
+scale = Vector2(3.5, 3.5)
+sprite_frames = SubResource("SpriteFrames_2ev51")
+
+[node name="Body13" type="AnimatedSprite2D" parent="."]
+position = Vector2(-786.9999, -11.000001)
+scale = Vector2(3.5, 3.5)
+sprite_frames = SubResource("SpriteFrames_2ev51")
+
+[node name="Body14" type="AnimatedSprite2D" parent="."]
+position = Vector2(-948, -13)
+scale = Vector2(3.5, 3.5)
+sprite_frames = SubResource("SpriteFrames_2ev51")
+
+[node name="Body15" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1108.9999, -12.000001)
+scale = Vector2(3.5, 3.5)
+sprite_frames = SubResource("SpriteFrames_2ev51")
+
+[node name="Body16" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1270, -14)
+scale = Vector2(3.5, 3.5)
+sprite_frames = SubResource("SpriteFrames_2ev51")
+
+[node name="Tail" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1453.0001, -23.000002)
+scale = Vector2(3.5, 3.5)
+sprite_frames = SubResource("SpriteFrames_ws2wn")
+flip_v = true
+
+[node name="Head" type="CharacterBody2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("4_ohb1p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Head"]
+position = Vector2(43.75, -21.5)
+shape = SubResource("RectangleShape2D_ohb1p")
+
+[node name="Hurtbox" parent="Head" instance=ExtResource("5_b2cnq")]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Head/Hurtbox"]
+position = Vector2(43.75, -21.5)
+shape = SubResource("RectangleShape2D_ohb1p")
+
+[node name="Hitbox" parent="Head" instance=ExtResource("6_ws2wn")]
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Head/Hitbox"]
+position = Vector2(43.75, -21.5)
+shape = SubResource("RectangleShape2D_ohb1p")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Head"]
+position = Vector2(37.000004, -16.999998)
+rotation = 1.5550884
+scale = Vector2(3.2719953, 3.5620792)
+sprite_frames = SubResource("SpriteFrames_b2cnq")
+flip_h = true

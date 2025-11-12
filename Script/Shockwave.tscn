@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://b4qsfrsf5ftry"]
+
+[ext_resource type="Script" uid="uid://cvj8135fk05uo" path="res://Script/Bungisngis_shock.gd" id="1_4epm4"]
+[ext_resource type="Texture2D" uid="uid://cuc6ej0blkn5d" path="res://Sprites/Rock (1).png" id="2_lkvob"]
+[ext_resource type="PackedScene" uid="uid://b4mpprclvqx73" path="res://systems/Combat/hitbox.tscn" id="3_lkvob"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gqkx4"]
+size = Vector2(412.5, 425)
+
+[node name="ShockWave" type="Node2D"]
+scale = Vector2(0.15, 0.15)
+
+[node name="Area2D" type="CharacterBody2D" parent="."]
+collision_layer = 4
+script = ExtResource("1_4epm4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-6.2499943, 12.500006)
+shape = SubResource("RectangleShape2D_gqkx4")
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D"]
+position = Vector2(-12.499992, 0)
+scale = Vector2(6.640625, 7.03125)
+texture = ExtResource("2_lkvob")
+
+[node name="Hitbox" parent="Area2D" instance=ExtResource("3_lkvob")]
+visible = false
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Area2D/Hitbox"]
+position = Vector2(-6.2499943, 12.500006)
+shape = SubResource("RectangleShape2D_gqkx4")

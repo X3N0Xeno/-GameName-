@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://bu3mg3avqbfd1"]
+
+[ext_resource type="Script" uid="uid://c582rtahhfpse" path="res://scripts/breakable_wall.gd" id="1_ba5p1"]
+
+[node name="BreakableWall2" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_ba5p1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(58123, 137084)
+scale = Vector2(1.2800009, 1)

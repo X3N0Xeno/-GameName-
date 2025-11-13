@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://5k3bf1nnm8hw" path="res://assets/sprites/world/Basilica/bookshelf.png" id="14_re2ji"]
 [ext_resource type="Script" uid="uid://c3esfdhftruqv" path="res://scripts/moving_barrier.gd" id="14_u11dr"]
 [ext_resource type="Script" uid="uid://sw50efav76hx" path="res://scenes/boss_manager.gd" id="15_wft7y"]
+[ext_resource type="PackedScene" uid="uid://b4qwhk5cfycfo" path="res://Scene/blacklady.tscn" id="16_q248m"]
 [ext_resource type="Script" uid="uid://c48gyy7uu7bnf" path="res://scenes/cameraManager.gd" id="16_skcl5"]
 [ext_resource type="PackedScene" uid="uid://b0t2q5erqiw0n" path="res://scenes/Babaylan/babaylan_(save).tscn" id="17_niuwy"]
 [ext_resource type="Texture2D" uid="uid://ces7eut1jaouf" path="res://assets/sprites/world/Basilica/download.png" id="17_skcl5"]
@@ -2789,7 +2790,7 @@ shape = SubResource("RectangleShape2D_ro2rk")
 
 [node name="BossManager" type="Node" parent="." node_paths=PackedStringArray("battle_trigger", "camera_manager", "arena_camera_position")]
 script = ExtResource("15_wft7y")
-boss_scene = ExtResource("16_rlxj7")
+boss_scene = ExtResource("16_q248m")
 boss_spawn_pos = Vector2(1051, -280)
 battle_trigger = NodePath("../BattleTrigger")
 barriers = Array[NodePath]([NodePath("../EntranceDoor"), NodePath("../Barrier"), NodePath("../Barrier2")])

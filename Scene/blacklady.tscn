@@ -55,27 +55,23 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4bnlc"]
-radius = 65.0
-height = 380.0
+radius = 3.0
+height = 26.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_42ta2"]
-radius = 168.0119
+radius = 17.029387
 
 [node name="BLACK Lady" type="Node2D"]
-scale = Vector2(0.1, 0.1)
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 collision_layer = 4
 script = ExtResource("1_pa8m5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
-position = Vector2(6.25, 13.250001)
-scale = Vector2(12, 12)
 sprite_frames = SubResource("SpriteFrames_ico7m")
 animation = &"Idle"
 
 [node name="Contact Collision" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(13, 3)
 shape = SubResource("CapsuleShape2D_4bnlc")
 
 [node name="Hitbox" parent="CharacterBody2D" instance=ExtResource("4_al848")]
@@ -83,11 +79,10 @@ collision_layer = 0
 collision_mask = 32
 
 [node name="DownSlash" type="CollisionShape2D" parent="CharacterBody2D/Hitbox"]
-position = Vector2(13, 58)
+position = Vector2(0, 13)
 shape = SubResource("CircleShape2D_42ta2")
 
 [node name="Contact Collision" type="CollisionShape2D" parent="CharacterBody2D/Hitbox"]
-position = Vector2(13, 3)
 shape = SubResource("CapsuleShape2D_4bnlc")
 
 [node name="Node" type="Node" parent="CharacterBody2D"]
@@ -97,7 +92,6 @@ shape = SubResource("CapsuleShape2D_4bnlc")
 [node name="PillarSpawn" type="Marker2D" parent="CharacterBody2D/Node"]
 
 [node name="Hurtbox" parent="CharacterBody2D" instance=ExtResource("5_bmt1g")]
-position = Vector2(13, 3)
 collision_layer = 8
 collision_mask = 0
 

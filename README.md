@@ -1,1 +1,6 @@
-# [Game Name]
+#BANHWA
+
+CREDITS AND STUFF:
+MADE BY ONCE IN ZEROES
+
+Assets Used:

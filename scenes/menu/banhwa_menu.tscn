@@ -1,0 +1,57 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7mmh82j5js8b"]
+
+[ext_resource type="FontFile" uid="uid://nx7hae01bq0s" path="res://assets/fonts/Righteous/Righteous.ttf" id="1_mj6d7"]
+[ext_resource type="FontFile" uid="uid://m5si6ayylo6q" path="res://assets/fonts/dogica_font/TTF/dogicapixel.ttf" id="2_ggwqa"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ggwqa"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="Banhwa_Menu" type="Node2D"]
+
+[node name="Panel" type="Panel" parent="."]
+offset_right = 320.0
+offset_bottom = 180.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ggwqa")
+
+[node name="Title" type="RichTextLabel" parent="Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 16.0
+offset_bottom = 56.0
+grow_horizontal = 2
+theme_override_fonts/normal_font = ExtResource("1_mj6d7")
+bbcode_enabled = true
+text = "
+[center][wave amp=30.0]BANHWA[/wave][/center]"
+fit_content = true
+
+[node name="Buttplay" type="Button" parent="."]
+offset_left = 142.0
+offset_top = 96.0
+offset_right = 180.0
+offset_bottom = 119.0
+theme_override_fonts/font = ExtResource("2_ggwqa")
+theme_override_font_sizes/font_size = 8
+text = "Play"
+flat = true
+
+[node name="ButtOptions" type="Button" parent="."]
+offset_left = 130.0
+offset_top = 120.0
+offset_right = 192.0
+offset_bottom = 143.0
+theme_override_fonts/font = ExtResource("2_ggwqa")
+theme_override_font_sizes/font_size = 8
+text = "Options"
+flat = true
+
+[node name="ButtQuit" type="Button" parent="."]
+offset_left = 143.0
+offset_top = 144.0
+offset_right = 181.0
+offset_bottom = 167.0
+theme_override_fonts/font = ExtResource("2_ggwqa")
+theme_override_font_sizes/font_size = 8
+text = "Quit"
+flat = true

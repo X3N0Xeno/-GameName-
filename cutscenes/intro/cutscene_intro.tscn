@@ -4,8 +4,8 @@
 [ext_resource type="AudioStream" uid="uid://vp72ke1r4swr" path="res://cutscenes/intro/Music and SFX/mystical_mystery.mp3" id="1_af5uc"]
 [ext_resource type="Texture2D" uid="uid://dewnsyohwnqkh" path="res://cutscenes/intro/art/cutscene_intro-Sheet.png" id="1_chmx8"]
 [ext_resource type="AudioStream" uid="uid://babmx06lsesx3" path="res://cutscenes/intro/Music and SFX/flint-strike-38491.mp3" id="1_ewfh8"]
-[ext_resource type="FontFile" uid="uid://m5si6ayylo6q" path="res://cutscenes/intro/dogica_font/TTF/dogicapixel.ttf" id="2_chmx8"]
-[ext_resource type="FontFile" uid="uid://8a46vlwhdab5" path="res://cutscenes/intro/dogica_font/TTF/dogicapixelbold.ttf" id="3_af5uc"]
+[ext_resource type="FontFile" uid="uid://m5si6ayylo6q" path="res://assets/fonts/dogica_font/TTF/dogicapixel.ttf" id="2_chmx8"]
+[ext_resource type="FontFile" uid="uid://8a46vlwhdab5" path="res://assets/fonts/dogica_font/TTF/dogicapixelbold.ttf" id="3_af5uc"]
 
 [sub_resource type="Image" id="Image_ey3i7"]
 data = {

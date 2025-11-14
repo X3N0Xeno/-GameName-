@@ -19,11 +19,11 @@ func _input(_event: InputEvent) -> void:
 		%Fader.modulate = Color(255.014, 255.014, 255.014, 1.0)
 		%AnimationPlayer.stop()
 		##INSERT GO TO OTHER SCENE CODE HERE OR DELETE THIS SCENE. HOWEVER U WANNA IMPLEMENT THE START SCREEN
-		get_tree().change_scene_to_file("res://scenes/Museum_Dark.tscn")
+		%Container.queue_free()
 
 func _on_animation_player_animation_finished(_anim_name: StringName) -> void:
-	get_tree().change_scene_to_file("res://scenes/Museum_Dark.tscn")
+	%Container.queue_free()
 
 
 func _on_timer_timeout() -> void:
-	$Label.visible = false
+	%Label.visible = false
